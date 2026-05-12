@@ -4,8 +4,9 @@ Repositorio del entregable para el Diplomado de Ciencia de Datos del Modulo 2
 # Primera parte - R: Vuelos de NYC
 Entregables:
 260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección 1 en R.qmd
-
-
+260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección 1 en R.html
+260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit_-Seccion 1 en SQL.qmd
+260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit_-Seccion 1 en SQL.html
 
 # Segunda parte - Python: API APOD de la NASA
 Entregable:
