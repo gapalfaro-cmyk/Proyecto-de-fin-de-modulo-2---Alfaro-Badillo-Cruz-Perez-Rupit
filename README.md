@@ -9,6 +9,9 @@ Entregables:
 
 # Segunda parte - Python: API APOD de la NASA
 Entregable:
+Se documenta la programación en Github/ Segunda Parte - Python:API APOD de la NASA
+Se entregan los resultados de las consultas en el Google Colab: 
+  https://colab.research.google.com/drive/1YmvXTNP_Exu4C2HuMtFqmGQDFFW1aKaX?usp=sharing#scrollTo=NorP-9qi0pyd
 
 # Tercera parte - Lenguaje R y Python (ambos): Calidad del café
 Entregables:
