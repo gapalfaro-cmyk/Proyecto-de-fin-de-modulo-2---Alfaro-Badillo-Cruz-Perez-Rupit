@@ -1,0 +1,1963 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Casandra Medea Badillo Salas, Gabriela Alfaro Prieto, Emmanuel Cruz Durán, Gabriela Pérez González, Livia Alejandra Rupit Rupit">
+
+<title>Proyecto de fin de módulo. Vuelos de NYC</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección 1 en R_files/libs/clipboard/clipboard.min.js"></script>
+<script src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección 1 en R_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección 1 en R_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección 1 en R_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección 1 en R_files/libs/quarto-html/popper.min.js"></script>
+<script src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección 1 en R_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección 1 en R_files/libs/quarto-html/anchor.min.js"></script>
+<link href="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección 1 en R_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección 1 en R_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección 1 en R_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección 1 en R_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección 1 en R_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Proyecto de fin de módulo. Vuelos de NYC</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Casandra Medea Badillo Salas, Gabriela Alfaro Prieto, Emmanuel Cruz Durán, Gabriela Pérez González, Livia Alejandra Rupit Rupit </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="proyecto-de-fin-de-módulo" class="level2">
+<h2 class="anchored" data-anchor-id="proyecto-de-fin-de-módulo">Proyecto de fin de módulo</h2>
+<p><strong>Primera parte - R: Vuelos de NYC</strong></p>
+<p>Responda las siguientes preguntas de 2 formas. Una <strong>utilizando verbos de {dplyr}</strong> (SI EN ESTE ARCHIVO) y la otra con sintaxis SQL (NO EN ESTE ARCHIVO):</p>
+</section>
+<section id="instalar-librerías-y-conexión-con-la-información." class="level2">
+<h2 class="anchored" data-anchor-id="instalar-librerías-y-conexión-con-la-información.">0. Instalar librerías y conexión con la información.</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("DataExplorer")</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("tidyverse")</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DataExplorer)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'DataExplorer' was built under R version 4.5.3</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyverse' was built under R version 4.5.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'dplyr' was built under R version 4.5.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'lubridate' was built under R version 4.5.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.2.1     ✔ readr     2.1.6
+✔ forcats   1.0.1     ✔ stringr   1.6.0
+✔ ggplot2   4.0.3     ✔ tibble    3.3.1
+✔ lubridate 1.9.5     ✔ tidyr     1.3.2
+✔ purrr     1.2.1     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'DBI' was built under R version 4.5.3</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RSQLite)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'RSQLite' was built under R version 4.5.3</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Conectar a la base de datos</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">"C:/Users/Usuario/Documents/Diplomado Analisis de Ciencia de Datos/Pre-Clase/Modulo 2/Modulo 2 - Proyecto/vuelos.db"</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Leer las tablas necesarias y volverlas df</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>vuelos <span class="ot">&lt;-</span> <span class="fu">dbReadTable</span>(con, <span class="st">"vuelos"</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>aerolineas <span class="ot">&lt;-</span> <span class="fu">dbReadTable</span>(con, <span class="st">"aerolineas"</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>aeropuertos <span class="ot">&lt;-</span> <span class="fu">dbReadTable</span>(con, <span class="st">"aeropuertos"</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>aviones<span class="ot">&lt;-</span> <span class="fu">dbReadTable</span>(con, <span class="st">"aviones"</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>clima<span class="ot">&lt;-</span> <span class="fu">dbReadTable</span>(con, <span class="st">"clima"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Para darle una revisión a las tablas </span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(aeropuertos)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  faa                           name      lat       lon  alt tz dst
+1 04G              Lansdowne Airport 41.13047 -80.61958 1044 -5   A
+2 06A  Moton Field Municipal Airport 32.46057 -85.68003  264 -6   A
+3 06C            Schaumburg Regional 41.98934 -88.10124  801 -6   A
+4 06N                Randall Airport 41.43191 -74.39156  523 -5   A
+5 09J          Jekyll Island Airport 31.07447 -81.42778   11 -5   A
+6 0A9 Elizabethton Municipal Airport 36.37122 -82.17342 1593 -5   A
+             tzone
+1 America/New_York
+2  America/Chicago
+3  America/Chicago
+4 America/New_York
+5 America/New_York
+6 America/New_York</code></pre>
+</div>
+</div>
+<p>Instalación de librerías necesarias install.packages(c(“DBI”, “RSQLite”, “dplyr”, “dbplyr”, “lubridate”, “ggplot2”))</p>
+</section>
+<section id="qué-aerolínea-tuvo-el-mayor-retraso-promedio-en-la-salida-en-2013" class="level2">
+<h2 class="anchored" data-anchor-id="qué-aerolínea-tuvo-el-mayor-retraso-promedio-en-la-salida-en-2013">1. ¿Qué aerolínea tuvo el mayor retraso promedio en la salida en 2013?</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear tabla resumen de retrasos por aerolínea, solo tomando en cuenta los datos de salida sin tomar en cuenta retrasos de llegadas</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>tabla_resumen <span class="ot">&lt;-</span> vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2013</span>) <span class="sc">%&gt;%</span> <span class="co"># nos aseguramos que solo haya datos del 2013</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(carrier) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">retraso_salida =</span> <span class="fu">mean</span>(dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(aerolineas, <span class="at">by =</span> <span class="st">"carrier"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(carrier, name, retraso_salida) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(retraso_salida))</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostrar el resultado</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(tabla_resumen)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 16 × 3
+   carrier name                        retraso_salida
+   &lt;chr&gt;   &lt;chr&gt;                                &lt;dbl&gt;
+ 1 F9      Frontier Airlines Inc.               20.2 
+ 2 EV      ExpressJet Airlines Inc.             20.0 
+ 3 YV      Mesa Airlines Inc.                   19.0 
+ 4 FL      AirTran Airways Corporation          18.7 
+ 5 WN      Southwest Airlines Co.               17.7 
+ 6 9E      Endeavor Air Inc.                    16.7 
+ 7 B6      JetBlue Airways                      13.0 
+ 8 VX      Virgin America                       12.9 
+ 9 OO      SkyWest Airlines Inc.                12.6 
+10 UA      United Air Lines Inc.                12.1 
+11 MQ      Envoy Air                            10.6 
+12 DL      Delta Air Lines Inc.                  9.26
+13 AA      American Airlines Inc.                8.59
+14 AS      Alaska Airlines Inc.                  5.80
+15 HA      Hawaiian Airlines Inc.                4.90
+16 US      US Airways Inc.                       3.78</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Graficar el resultado</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tabla_resumen, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(name, retraso_salida), <span class="at">y =</span> retraso_salida)) <span class="sc">+</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Promedio de retraso en salida por aerolínea"</span>,</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Aerolínea"</span>,</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Retraso promedio (minutos)"</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección-1-en-R_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_boxplot</span>(vuelos[,<span class="fu">c</span>(<span class="st">"dep_delay"</span>,<span class="st">"carrier"</span>)],<span class="at">by=</span><span class="st">"carrier"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 8255 rows containing non-finite outside the scale range
+(`stat_boxplot()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección-1-en-R_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Interpretación:</strong><br>
+Frontier Airlines Inc.&nbsp;tuvo el mayor retraso promedio en la salida en 2013.<br>
+</p>
+</section>
+<section id="qué-día-de-la-semana-tuvo-más-vuelos-retrasados-en-promedio" class="level2">
+<h2 class="anchored" data-anchor-id="qué-día-de-la-semana-tuvo-más-vuelos-retrasados-en-promedio">2. ¿Qué día de la semana tuvo más vuelos retrasados en promedio?</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>tabla_dias <span class="ot">&lt;-</span> vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># filter(year == 2013) %&gt;%</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fecha =</span> <span class="fu">make_date</span>(year, month, day),</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">dia_semana =</span> <span class="fu">wday</span>(fecha, <span class="at">label =</span> <span class="cn">TRUE</span>, <span class="at">abbr =</span> <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dia_semana) <span class="sc">%&gt;%</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">retraso_promedio_salida =</span> <span class="fu">mean</span>(dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(retraso_promedio_salida))</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(tabla_dias)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7 × 2
+  dia_semana retraso_promedio_salida
+  &lt;ord&gt;                        &lt;dbl&gt;
+1 jueves                       16.1 
+2 lunes                        14.8 
+3 viernes                      14.7 
+4 miércoles                    11.8 
+5 domingo                      11.6 
+6 martes                       10.6 
+7 sábado                        7.65</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Día con mayor retraso promedio</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>tabla_dias <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  dia_semana retraso_promedio_salida
+  &lt;ord&gt;                        &lt;dbl&gt;
+1 jueves                        16.1</code></pre>
+</div>
+</div>
+<p><strong>Interpretación:</strong><br>
+El día de la semana con mayor retraso promedio en vuelos, tanto de llegada como de salida, fue el <strong>jueves</strong>, con 16.14 minutos de retraso en promedio.</p>
+<p><em>Seguimos utilizando solo los retrasos de salida para el analisis , dada la aclaración del profesor en telegram</em></p>
+</section>
+<section id="cuál-es-la-distribución-de-los-retrasos-en-la-salida-para-cada-aeropuerto" class="level2">
+<h2 class="anchored" data-anchor-id="cuál-es-la-distribución-de-los-retrasos-en-la-salida-para-cada-aeropuerto">3. ¿Cuál es la distribución de los retrasos en la salida para cada aeropuerto?</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filtramos los NAs en retrasos de salida para solo tomar la informacion necesaria.</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>vuelos_limpios <span class="ot">&lt;-</span> vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dep_delay))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos un boxplot con los vuelos (sin NAs), mapeando la ciudad de origen al eje X y su retraso de salida al eje Y para visualizar la distribución de los retrasos por cada aeropuerto de origen.</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(vuelos_limpios, <span class="fu">aes</span>(<span class="at">x =</span> origin, <span class="at">y =</span> dep_delay)) <span class="sc">+</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">50</span>, <span class="dv">1305</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección-1-en-R_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hacemos un zoom ya que la caja de la gráfica está muy compacta dada la dispersión de los datos.</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(vuelos_limpios, <span class="fu">aes</span>(<span class="at">x =</span> origin, <span class="at">y =</span> dep_delay)) <span class="sc">+</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">50</span>, <span class="dv">50</span>)) <span class="co"># hacemos "zoom"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección-1-en-R_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Hicimos zoom enel eje de las x porque tiene colas muy largas</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(vuelos_limpios, <span class="fu">aes</span>(<span class="at">x =</span> dep_delay)) <span class="sc">+</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>, <span class="at">fill =</span> <span class="st">"steelblue"</span>, <span class="at">color =</span> <span class="st">"grey"</span>) <span class="sc">+</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> origin) <span class="sc">+</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">250</span>)) <span class="sc">+</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Histograma de retrasos en salida por aeropuerto"</span>,</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Retraso en salida (minutos)"</span>,</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Frecuencia dep_delay"</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección-1-en-R_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>distribucion_retrasos <span class="ot">&lt;-</span> vuelos_limpios <span class="sc">%&gt;%</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(origin) <span class="sc">%&gt;%</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">vuelos_retrasados =</span> <span class="fu">n</span>(),</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">retraso_promedio =</span> <span class="fu">mean</span>(dep_delay),</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">retraso_mediana =</span> <span class="fu">median</span>(dep_delay),</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">desviacion_estandar =</span> <span class="fu">sd</span>(dep_delay),</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">retraso_minimo =</span> <span class="fu">min</span>(dep_delay),</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">q1 =</span> <span class="fu">quantile</span>(dep_delay, <span class="fl">0.25</span>),</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">q3 =</span> <span class="fu">quantile</span>(dep_delay, <span class="fl">0.75</span>),</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">retraso_maximo =</span> <span class="fu">max</span>(dep_delay)</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(retraso_promedio))</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>distribucion_retrasos</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 9
+  origin vuelos_retrasados retraso_promedio retraso_mediana desviacion_estandar
+  &lt;chr&gt;              &lt;int&gt;            &lt;dbl&gt;           &lt;dbl&gt;               &lt;dbl&gt;
+1 EWR               117596             15.1              -1                41.3
+2 JFK               109416             12.1              -1                39.0
+3 LGA               101509             10.3              -3                40.0
+# ℹ 4 more variables: retraso_minimo &lt;dbl&gt;, q1 &lt;dbl&gt;, q3 &lt;dbl&gt;,
+#   retraso_maximo &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p><strong>*Interpretación:</strong><br>
+En los tres aeropuertos analizados, la media de retraso en salida es menor a 0 minutos. Esto indica que al menos la mitad de los vuelos despegan puntuales o incluso antes de lo previsto. Destaca especialmente LGA, que presenta el promedio más bajo.El 75% de los vuelos despegan con menos de 15 minutos de retraso, lo que refleja un desempeño aceptable en términos de puntualidad. Sin embargo, el 25% restante muestra demoras superiores a los 25 minutos, evidenciando un grupo de vuelos con retrasos significativos. Se identifican pocos valores atípicos de salidas adelantadas (más de 25 minutos antes), concentrados principalmente en LGA y en menor medida en JFK. En contraste, los outliers de retrasos prolongados son más frecuentes: en los tres aeropuertos más del 25% de los vuelos despegan con más de 25 minutos de demora, lo que sugiere un patrón recurrente de retrasos importantes.</p>
+</section>
+<section id="qué-proporción-de-vuelos-se-retrasaron-más-de-30-minutos" class="level2">
+<h2 class="anchored" data-anchor-id="qué-proporción-de-vuelos-se-retrasaron-más-de-30-minutos">4. ¿Qué proporción de vuelos se retrasaron más de 30 minutos?</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular proporción de vuelos con retraso &gt; 30 minutos</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_vuelos =</span> <span class="fu">n</span>(),</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">retrasados_30 =</span> <span class="fu">sum</span>(dep_delay <span class="sc">&gt;</span> <span class="dv">30</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">proporcion =</span> retrasados_30 <span class="sc">/</span> total_vuelos</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  total_vuelos retrasados_30 proporcion
+1       336776         48291   0.143392</code></pre>
+</div>
+</div>
+<p><strong>Interpretación:<br>
+</strong>De los 336,776 vuelos registrados, alrededor de <strong>48,291</strong> presentaron retrasos de salida superiores a 30 minutos. Esto equivale a un <strong>14.3 % del total de vuelos</strong>. En otras palabras, <strong>1 de cada 7 vuelos</strong> tuvo un retraso mayor de 30 minutos en la salida.<br>
+<br>
+La mayoría de los vuelos (casi 86 %) salen puntuales o con retrasos menores a media hora.</p>
+<p>Los retrasos largos (más de 30 minutos) ocurren con cierta frecuencia, pero no son la norma.</p>
+</section>
+<section id="qué-destinos-tuvieron-los-mayores-retrasos-promedio-en-la-llegada" class="level2">
+<h2 class="anchored" data-anchor-id="qué-destinos-tuvieron-los-mayores-retrasos-promedio-en-la-llegada">5. ¿Qué destinos tuvieron los mayores retrasos promedio en la llegada?</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>aeropuertos <span class="ot">&lt;-</span> <span class="fu">dbReadTable</span>(con, <span class="st">"aeropuertos"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>destinos_retraso <span class="ot">&lt;-</span> vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dest) <span class="sc">%&gt;%</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">retraso_promedio_llegada =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_vuelos =</span> <span class="fu">n</span>(),</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(aeropuertos, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"dest"</span> <span class="ot">=</span> <span class="st">"faa"</span>)) <span class="sc">%&gt;%</span>  <span class="co"># unir dest con faa</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, dest, retraso_promedio_llegada, total_vuelos) <span class="sc">%&gt;%</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(retraso_promedio_llegada))</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(destinos_retraso)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 105 × 4
+   name                          dest  retraso_promedio_llegada total_vuelos
+   &lt;chr&gt;                         &lt;chr&gt;                    &lt;dbl&gt;        &lt;int&gt;
+ 1 Columbia Metropolitan         CAE                       41.8          116
+ 2 Tulsa Intl                    TUL                       33.7          315
+ 3 Will Rogers World             OKC                       30.6          346
+ 4 Jackson Hole Airport          JAC                       28.1           25
+ 5 Mc Ghee Tyson                 TYS                       24.1          631
+ 6 Dane Co Rgnl Truax Fld        MSN                       20.2          572
+ 7 Richmond Intl                 RIC                       20.1         2454
+ 8 Akron Canton Regional Airport CAK                       19.7          864
+ 9 Des Moines Intl               DSM                       19.0          569
+10 Gerald R Ford Intl            GRR                       18.2          765
+# ℹ 95 more rows</code></pre>
+</div>
+</div>
+<p><strong>Interpretación:</strong></p>
+<p>Al continuar con el análisis, podemos identificar los 5 destinos con mayores demoras en promedio: <strong>Columbia Metropolitan, Tulsa International, Will Rogers World, Jackson Hole Airport y Mc Ghee Tyson</strong>, que concentran los retrasos más significativos dentro del conjunto de datos.</p>
+</section>
+<section id="qué-aerolíneas-tuvieron-el-mayor-número-de-vuelos-desde-nyc" class="level2">
+<h2 class="anchored" data-anchor-id="qué-aerolíneas-tuvieron-el-mayor-número-de-vuelos-desde-nyc">6. ¿Qué aerolíneas tuvieron el mayor número de vuelos desde NYC?</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Contamos vuelos por aerolínea</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Agrupamos vuelos por aerolinea</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(carrier) <span class="sc">%&gt;%</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Nos indica cuántos vuelos tiene cada aerolinea</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">num_vuelos =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Ordena de mayor a menor</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(num_vuelos)) <span class="sc">%&gt;%</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Une con la tabla aerolineas, cambia el código por el nombre de la aerolinea</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(aerolineas, <span class="at">by =</span> <span class="st">"carrier"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 16 × 3
+   carrier num_vuelos name                       
+   &lt;chr&gt;        &lt;int&gt; &lt;chr&gt;                      
+ 1 UA           58665 United Air Lines Inc.      
+ 2 B6           54635 JetBlue Airways            
+ 3 EV           54173 ExpressJet Airlines Inc.   
+ 4 DL           48110 Delta Air Lines Inc.       
+ 5 AA           32729 American Airlines Inc.     
+ 6 MQ           26397 Envoy Air                  
+ 7 US           20536 US Airways Inc.            
+ 8 9E           18460 Endeavor Air Inc.          
+ 9 WN           12275 Southwest Airlines Co.     
+10 VX            5162 Virgin America             
+11 FL            3260 AirTran Airways Corporation
+12 AS             714 Alaska Airlines Inc.       
+13 F9             685 Frontier Airlines Inc.     
+14 YV             601 Mesa Airlines Inc.         
+15 HA             342 Hawaiian Airlines Inc.     
+16 OO              32 SkyWest Airlines Inc.      </code></pre>
+</div>
+</div>
+<p><strong>Interpretación:</strong></p>
+<p>Al analizar los 336,776 vuelos registrados en 2013, se observa que el top 5 aerolíneas con mayor número de operaciones desde los aeropuertos de Nueva York fueron:</p>
+<p><strong>United Airlines (UA):</strong> 58,665 vuelos, la aerolínea con mayor presencia.</p>
+<p><strong>JetBlue Airways (B6):</strong> 54,635 vuelos, muy cercana a United en volumen.</p>
+<p><strong>ExpressJet Airlines (EV):</strong> 54,173 vuelos, también con una participación significativa.</p>
+<p><strong>Delta Air Lines (DL):</strong> 48,110 vuelos, consolidada como una de las principales operadoras.</p>
+<p><strong>American Airlines (AA):</strong> 32,729 vuelos, ocupando el quinto lugar.</p>
+</section>
+<section id="cómo-varía-el-retraso-de-los-vuelos-según-el-fabricante-de-la-aeronave" class="level2">
+<h2 class="anchored" data-anchor-id="cómo-varía-el-retraso-de-los-vuelos-según-el-fabricante-de-la-aeronave">7. ¿Cómo varía el retraso de los vuelos según el fabricante de la aeronave?</h2>
+<p>Nota: Se tomará en cuenta la columna arr_delay (llegada) porque esta refleja el retraso final del vuelo (mean(arr_delay, na.rm = TRUE) )</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>aviones <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbReadTable</span>(con, <span class="st">"aviones"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>vuelos_reducido <span class="ot">&lt;-</span> vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(aviones, <span class="at">by =</span> <span class="st">"tailnum"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(tailnum, arr_delay, manufacturer)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># saber cuantos NAs hay en manufacturer</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(vuelos_reducido<span class="sc">$</span>manufacturer))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 52606</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># saber cuantos NAs hay en arr_delay</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(vuelos_reducido<span class="sc">$</span>arr_delay))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9430</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(aviones, <span class="at">by =</span> <span class="st">"tailnum"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#debemos quitar nos NAs para que no afecten el resultado</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>( <span class="sc">!</span><span class="fu">is.na</span>(arr_delay)) <span class="sc">%&gt;%</span>  </span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#filter(!is.na(manufacturer), !is.na(arr_delay)) %&gt;%  </span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer) <span class="sc">%&gt;%</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">retraso_promedio =</span> <span class="fu">mean</span>(arr_delay),</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_vuelos =</span> <span class="fu">n</span>(),</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(retraso_promedio))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 36 × 3
+   manufacturer           retraso_promedio total_vuelos
+   &lt;chr&gt;                             &lt;dbl&gt;        &lt;int&gt;
+ 1 AGUSTA SPA                        30.6            31
+ 2 CANADAIR                          16.7          1492
+ 3 EMBRAER                           13.9         63530
+ 4 FRIEDEMANN JON                    12.9            56
+ 5 AVIAT AIRCRAFT INC                12.3            17
+ 6 BARKER JACK L                     11.1           250
+ 7 LAMBERT RICHARD                    9.08           53
+ 8 CESSNA                             8.62          623
+ 9 ROBINSON HELICOPTER CO             8.19          281
+10 CIRRUS DESIGN CORP                 8.17          289
+# ℹ 26 more rows</code></pre>
+</div>
+</div>
+<p><strong>Interpretación:</strong></p>
+<p>Aunque algunos fabricantes como AGUSTA SPA o AVIAT AIRCRAFT INC presentan altos tiempos de retrasos promedio, estos resultados deben interpretarse con cautela debido al reducido número de vuelos registrados para dichos fabricantes. En contraste, fabricantes como EMBRAER o CANADAIR cuentan con un número considerable de observaciones, por lo que sus promedios son más representativos del comportamiento real de los retrasos.</p>
+<p>Hay 52,606 vuelos que no tienen manufacturer, de los cuales 4,277 si tienen retraso registrado. (52,606-48,329 arr_delay=na).</p>
+<p>Si filtramos fabricantes con mas de 50 vuelos nos queda:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(aviones, <span class="at">by =</span> <span class="st">"tailnum"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(manufacturer), <span class="sc">!</span><span class="fu">is.na</span>(arr_delay)) <span class="sc">%&gt;%</span>  <span class="co"># limpiar NA</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer) <span class="sc">%&gt;%</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">retraso_promedio =</span> <span class="fu">mean</span>(arr_delay),</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_vuelos =</span> <span class="fu">n</span>(),</span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(total_vuelos <span class="sc">&gt;</span> <span class="dv">50</span>) <span class="sc">%&gt;%</span>   <span class="co">#filtrar para fabricantes con mas de 50 vuelos</span></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(retraso_promedio))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 22 × 3
+   manufacturer           retraso_promedio total_vuelos
+   &lt;chr&gt;                             &lt;dbl&gt;        &lt;int&gt;
+ 1 CANADAIR                          16.7          1492
+ 2 EMBRAER                           13.9         63530
+ 3 FRIEDEMANN JON                    12.9            56
+ 4 BARKER JACK L                     11.1           250
+ 5 LAMBERT RICHARD                    9.08           53
+ 6 CESSNA                             8.62          623
+ 7 ROBINSON HELICOPTER CO             8.19          281
+ 8 CIRRUS DESIGN CORP                 8.17          289
+ 9 CANADAIR LTD                       8.14           93
+10 BOMBARDIER INC                     8.12        27430
+# ℹ 12 more rows</code></pre>
+</div>
+</div>
+<p><strong>Interpretación 2:</strong></p>
+<p>El retraso promedio de los vuelos varía entre fabricantes de aeronaves. Al considerar únicamente aquellos con un número significativo de vuelos, se observa que fabricantes como EMBRAER presentan mayores retrasos promedio, mientras que otros como BOEING y AIRBUS muestran valores más bajos. Esto sugiere que existen diferencias en el desempeño operativo entre fabricantes, aunque estas no son extremadamente pronunciadas.</p>
+</section>
+<section id="los-aviones-más-antiguos-tienen-más-retrasos" class="level2">
+<h2 class="anchored" data-anchor-id="los-aviones-más-antiguos-tienen-más-retrasos">8. ¿Los aviones más antiguos tienen más retrasos?</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>vuelos_edad <span class="ot">&lt;-</span> vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(aviones, <span class="at">by =</span> <span class="st">"tailnum"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">anio_fabricacion =</span> year.y) <span class="sc">%&gt;%</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(anio_fabricacion), <span class="sc">!</span><span class="fu">is.na</span>(arr_delay)) <span class="sc">%&gt;%</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">edad =</span> <span class="dv">2013</span> <span class="sc">-</span> anio_fabricacion)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>vuelos_edad  <span class="sc">%&gt;%</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">correlacion =</span> <span class="fu">cor</span>(edad, arr_delay))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  correlacion
+1 -0.01767153</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>promedios_edad <span class="ot">&lt;-</span> vuelos_edad <span class="sc">%&gt;%</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(edad) <span class="sc">%&gt;%</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">retraso_promedio =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>promedios_edad <span class="sc">%&gt;%</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">correlacion =</span> <span class="fu">cor</span>(edad, retraso_promedio))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  correlacion
+        &lt;dbl&gt;
+1      -0.433</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(vuelos_edad, <span class="fu">aes</span>(<span class="at">x =</span> edad, <span class="at">y =</span> arr_delay)) <span class="sc">+</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.05</span>) <span class="sc">+</span>   <span class="co"># 👈 más transparente (muchos datos)</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> promedios_edad,</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> edad, <span class="at">y =</span> retraso_promedio),</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"blue"</span>,</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Relación entre edad del avión y retraso en llegada"</span>,</span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Edad del avión"</span>,</span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Retraso en llegada"</span></span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección-1-en-R_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Hacimos un zoom entre el promedio de retraso y la correlación ya que con la gráfica de dispersión, es complejo ver el detalle de </span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(vuelos_edad, <span class="fu">aes</span>(<span class="at">x =</span> edad, <span class="at">y =</span> arr_delay)) <span class="sc">+</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> promedios_edad,</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> edad, <span class="at">y =</span> retraso_promedio),</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"blue"</span>,</span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Relación entre edad del avión y promedio de retraso en llegada"</span>,</span>
+<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Edad del avión"</span>,</span>
+<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Retraso en llegada"</span></span>
+<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección-1-en-R_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Interpretación:</strong></p>
+<p>Se analizó la relación entre la edad de las aeronaves y los retrasos en la llegada. La correlación obtenida fue de -0.0177, lo que indica que no existe una relación significativa entre ambas variables. La gráfica confirma este resultado, mostrando una dispersión amplia de los datos y una línea de tendencia prácticamente horizontal. Por lo tanto, la antigüedad del avión no parece influir de manera importante en los retrasos de los vuelos.</p>
+</section>
+<section id="qué-modelos-de-aviones-se-utilizan-con-mayor-frecuencia-en-vuelos-desde-nyc" class="level2">
+<h2 class="anchored" data-anchor-id="qué-modelos-de-aviones-se-utilizan-con-mayor-frecuencia-en-vuelos-desde-nyc">9. ¿Qué modelos de aviones se utilizan con mayor frecuencia en vuelos desde NYC?</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>modelos_frecuentes <span class="ot">&lt;-</span> vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(aviones, <span class="at">by =</span> <span class="st">"tailnum"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(model)) <span class="sc">%&gt;%</span></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(model, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="co">#contar vuelos por modelo, </span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>                            <span class="co">#sort = TRUE ordena de mayor a menor</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>modelos_frecuentes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 model     n
+1             A320-232 45831
+2            EMB-145LR 28027
+3      ERJ 190-100 IGW 23716
+4            EMB-145XR 14051
+5              737-824 13809
+6          CL-600-2D24 11807
+7              737-7H4 10389
+8                MD-88 10191
+9             A319-114  9713
+10         CL-600-2B19  9588
+11             757-222  9150
+12             737-832  8735
+13         CL-600-2C10  8471
+14            A319-131  6546
+15           737-924ER  6532
+16            A320-214  6444
+17            A319-112  6071
+18             737-724  5235
+19            A320-212  4271
+20             767-223  4257
+21             757-232  3980
+22             757-224  3687
+23             717-200  3150
+24            A321-211  3025
+25            A320-211  2906
+26            A321-231  2878
+27      DC-9-82(MD-82)  2656
+28             757-231  2380
+29             757-2Q8  2283
+30             737-732  1356
+31             767-332  1278
+32      DC-9-83(MD-83)  1201
+33             737-924  1026
+34             737-7BD   556
+35           767-424ER   532
+36             737-3H4   526
+37             757-223   501
+38             737-8H4   497
+39              G1159B   486
+40             767-323   450
+41             757-324   360
+42             737-890   346
+43            A330-243   342
+44           737-990ER   334
+45                SR22   291
+46             767-322   290
+47                 R66   286
+48             EMB-145   274
+49       ZODIAC 601HDS   252
+50               A185F   246
+51             737-76N   211
+52           FALCON XP   181
+53                172N   165
+54             757-251   162
+55             757-33N   133
+56             737-4B7   111
+57               CF-5D   103
+58           FALCON-XP   103
+59            A319-115    94
+60             DC-9-51    91
+61             767-3P6    87
+62            MD-90-30    74
+63             737-7BX    68
+64             757-26D    65
+65         OTTER DHC-3    63
+66   VANS AIRCRAFT RV6    63
+67           PA-31-350    56
+68                 150    54
+69             737-705    54
+70             737-76Q    47
+71                172M    45
+72           KITFOX IV    44
+73           PA-28-180    43
+74          PA-32R-300    43
+75                206B    42
+76            A319-132    41
+77          210-5(205)    39
+78                 550    38
+79                421C    36
+80             737-5H4    33
+81           767-432ER    32
+82               A109E    32
+83             737-401    28
+84               S-76A    27
+85                E-90    25
+86                 230    23
+87                310Q    22
+88              65-A90    22
+89             737-7Q8    22
+90              DC-7BF    22
+91             737-3Q8    20
+92         PA-32RT-300    20
+93                  60    19
+94             737-7AD    19
+95             737-990    18
+96                A-1B    18
+97            A340-313    18
+98             777-200    17
+99             737-8FH    16
+100            737-3TO    15
+101               172E    13
+102            767-224    13
+103               G-IV    13
+104            737-3G7    10
+105           A320-231     8
+106            737-301     7
+107            737-3L9     7
+108            737-3Y0     7
+109              787-8     6
+110            737-3K2     5
+111            737-524     4
+112            757-351     4
+113            767-324     4
+114            777-222     4
+115            777-224     4
+116            777-232     4
+117           A330-223     4
+118 MYSTERE FALCON 900     4
+119               AT-5     3
+120            737-317     2
+121            737-3T5     2
+122            757-212     2
+123            757-2B7     2
+124            767-201     2
+125            737-3A4     1
+126            747-451     1
+127           A330-323     1</code></pre>
+</div>
+</div>
+<p><strong>Interpretación:</strong></p>
+<p>El modelo A320-232 es el más utilizado (63% más que el segundo más utilizado) en vuelos desde NYC, seguido por otros modelos como el EMB-145LR y el ERJ 190-100 IGW. Esto muestra que algunos modelos concentran la mayor parte de los vuelos, mientras que otros se utilizan con menor frecuencia.</p>
+</section>
+<section id="cuál-es-la-distancia-promedio-de-vuelo-por-aerolínea" class="level2">
+<h2 class="anchored" data-anchor-id="cuál-es-la-distancia-promedio-de-vuelo-por-aerolínea">10. ¿Cuál es la distancia promedio de vuelo por aerolínea?</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular distancia promedio por aerolínea</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>distancia_promedio <span class="ot">&lt;-</span> vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(carrier) <span class="sc">%&gt;%</span></span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">promedio_distancia =</span> <span class="fu">mean</span>(distance, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(aerolineas, <span class="at">by =</span> <span class="st">"carrier"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(carrier, name, promedio_distancia) <span class="sc">%&gt;%</span></span>
+<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(promedio_distancia))</span>
+<span id="cb61-10"><a href="#cb61-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-11"><a href="#cb61-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Ver resultados</span></span>
+<span id="cb61-12"><a href="#cb61-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(distancia_promedio)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 16 × 3
+   carrier name                        promedio_distancia
+   &lt;chr&gt;   &lt;chr&gt;                                    &lt;dbl&gt;
+ 1 HA      Hawaiian Airlines Inc.                   4983 
+ 2 VX      Virgin America                           2499.
+ 3 AS      Alaska Airlines Inc.                     2402 
+ 4 F9      Frontier Airlines Inc.                   1620 
+ 5 UA      United Air Lines Inc.                    1529.
+ 6 AA      American Airlines Inc.                   1340.
+ 7 DL      Delta Air Lines Inc.                     1237.
+ 8 B6      JetBlue Airways                          1069.
+ 9 WN      Southwest Airlines Co.                    996.
+10 FL      AirTran Airways Corporation               665.
+11 MQ      Envoy Air                                 570.
+12 EV      ExpressJet Airlines Inc.                  563.
+13 US      US Airways Inc.                           553.
+14 9E      Endeavor Air Inc.                         530.
+15 OO      SkyWest Airlines Inc.                     501.
+16 YV      Mesa Airlines Inc.                        375.</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Complemento de la pregunta 10, ¿Cúal es el destino más popular de cada aerolínea y cuántos kilómetros recorre en esa ruta?</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Enlista el top 8 de los carriers</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>top10_distancia <span class="ot">&lt;-</span> vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(distance)) <span class="sc">%&gt;%</span></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(carrier) <span class="sc">%&gt;%</span></span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">promedio_distancia =</span> <span class="fu">mean</span>(distance),</span>
+<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb63-11"><a href="#cb63-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(promedio_distancia)) <span class="sc">%&gt;%</span></span>
+<span id="cb63-12"><a href="#cb63-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">8</span>)</span>
+<span id="cb63-13"><a href="#cb63-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-14"><a href="#cb63-14" aria-hidden="true" tabindex="-1"></a><span class="co">#Da el destino más popular por aerolínea</span></span>
+<span id="cb63-15"><a href="#cb63-15" aria-hidden="true" tabindex="-1"></a>destino_popular <span class="ot">&lt;-</span> vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb63-16"><a href="#cb63-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dest)) <span class="sc">%&gt;%</span></span>
+<span id="cb63-17"><a href="#cb63-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(carrier, dest) <span class="sc">%&gt;%</span></span>
+<span id="cb63-18"><a href="#cb63-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb63-19"><a href="#cb63-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_vuelos =</span> <span class="fu">n</span>(),</span>
+<span id="cb63-20"><a href="#cb63-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb63-21"><a href="#cb63-21" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb63-22"><a href="#cb63-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(carrier) <span class="sc">%&gt;%</span></span>
+<span id="cb63-23"><a href="#cb63-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(total_vuelos, <span class="at">n =</span> <span class="dv">1</span>, <span class="at">with_ties =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb63-24"><a href="#cb63-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb63-25"><a href="#cb63-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-26"><a href="#cb63-26" aria-hidden="true" tabindex="-1"></a><span class="co">#Unir con el top </span></span>
+<span id="cb63-27"><a href="#cb63-27" aria-hidden="true" tabindex="-1"></a>resultado_p10_complemento <span class="ot">&lt;-</span> top10_distancia <span class="sc">%&gt;%</span></span>
+<span id="cb63-28"><a href="#cb63-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(destino_popular, <span class="at">by =</span> <span class="st">"carrier"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb63-29"><a href="#cb63-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(aerolineas, <span class="at">by =</span> <span class="st">"carrier"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb63-30"><a href="#cb63-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb63-31"><a href="#cb63-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">aerolinea =</span> name,</span>
+<span id="cb63-32"><a href="#cb63-32" aria-hidden="true" tabindex="-1"></a>    promedio_distancia,</span>
+<span id="cb63-33"><a href="#cb63-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">destino_mas_popular =</span> dest,</span>
+<span id="cb63-34"><a href="#cb63-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">vuelos_a_ese_destino =</span> total_vuelos</span>
+<span id="cb63-35"><a href="#cb63-35" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb63-36"><a href="#cb63-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(promedio_distancia))</span>
+<span id="cb63-37"><a href="#cb63-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-38"><a href="#cb63-38" aria-hidden="true" tabindex="-1"></a>resultado_p10_complemento</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 4
+  aerolinea          promedio_distancia destino_mas_popular vuelos_a_ese_destino
+  &lt;chr&gt;                           &lt;dbl&gt; &lt;chr&gt;                              &lt;int&gt;
+1 Hawaiian Airlines…              4983  HNL                                  342
+2 Virgin America                  2499. LAX                                 2580
+3 Alaska Airlines I…              2402  SEA                                  714
+4 Frontier Airlines…              1620  DEN                                  685
+5 United Air Lines …              1529. ORD                                 6984
+6 American Airlines…              1340. DFW                                 7257
+7 Delta Air Lines I…              1237. ATL                                10571
+8 JetBlue Airways                 1069. FLL                                 6563</code></pre>
+</div>
+</div>
+<p><strong>Interpretación:</strong></p>
+<p>Las tres aerolíneas con mayor distancia promedio son Hawaiian Airlines, Virgin America y Alaska Airlines.</p>
+<p><strong>Hawaiian Airlines</strong> aparece con el promedio más alto (≈ 4983 km). Con su vuelo más popular a Honolulu Hawái.</p>
+<p><strong>Virgin America y Alaska Airlines</strong> también muestran promedios altos (≈ 2400–2500 km), con el destino a Los Angeles.</p>
+<p><strong>United, American y Delta</strong> se ubican en un rango intermedio (≈ 1200–1500 km).</p>
+</section>
+<section id="qué-aeropuerto-de-nyc-tuvo-el-mayor-número-de-retrasos-en-la-salida" class="level2">
+<h2 class="anchored" data-anchor-id="qué-aeropuerto-de-nyc-tuvo-el-mayor-número-de-retrasos-en-la-salida">11. ¿Qué aeropuerto de NYC tuvo el mayor número de retrasos en la salida?</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar vuelos de NYC y contar retrasos en salida</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>retrasos_salida <span class="ot">&lt;-</span> vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(origin <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"JFK"</span>, <span class="st">"LGA"</span>, <span class="st">"EWR"</span>), dep_delay <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(origin) <span class="sc">%&gt;%</span></span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_retrasos =</span> <span class="fu">n</span>()</span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total_retrasos))</span>
+<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-10"><a href="#cb65-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(retrasos_salida)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  origin total_retrasos
+  &lt;chr&gt;           &lt;int&gt;
+1 EWR             52711
+2 JFK             42031
+3 LGA             33690</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Datos de retrasos</span></span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>retrasos_salida <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">origin =</span> <span class="fu">c</span>(<span class="st">"EWR"</span>, <span class="st">"JFK"</span>, <span class="st">"LGA"</span>),</span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">total_retrasos =</span> <span class="fu">c</span>(<span class="dv">52711</span>, <span class="dv">42031</span>, <span class="dv">33690</span>)</span>
+<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb67-8"><a href="#cb67-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-9"><a href="#cb67-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico de barras</span></span>
+<span id="cb67-10"><a href="#cb67-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(retrasos_salida, <span class="fu">aes</span>(<span class="at">x =</span> origin, <span class="at">y =</span> total_retrasos, <span class="at">fill =</span> origin)) <span class="sc">+</span></span>
+<span id="cb67-11"><a href="#cb67-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb67-12"><a href="#cb67-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> total_retrasos), <span class="at">vjust =</span> <span class="fl">0.0</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb67-13"><a href="#cb67-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb67-14"><a href="#cb67-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Número de Retrasos en Salida por Aeropuerto de NYC"</span>,</span>
+<span id="cb67-15"><a href="#cb67-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Aeropuerto"</span>,</span>
+<span id="cb67-16"><a href="#cb67-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Número de Retrasos"</span></span>
+<span id="cb67-17"><a href="#cb67-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb67-18"><a href="#cb67-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb67-19"><a href="#cb67-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"dodgerblue"</span>, <span class="st">"skyblue"</span>, <span class="st">"steelblue"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección-1-en-R_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Interpretación:</strong></p>
+<p>El aeropuerto con <strong>mayor número de retrasos en la salida</strong> es <strong>EWR (Newark)</strong>, seguido por JFK y finalmente LGA.</p>
+</section>
+<section id="qué-aeropuerto-tuvo-el-menor-tiempo-promedio-de-taxi-out" class="level2">
+<h2 class="anchored" data-anchor-id="qué-aeropuerto-tuvo-el-menor-tiempo-promedio-de-taxi-out">12. ¿Qué aeropuerto tuvo el menor tiempo promedio de taxi-out?</h2>
+<p><strong>Nota:</strong><br>
+La base de datos utilizada no contiene la variable <code>taxi_out</code>, por lo que utilizaremos una aproximación basada en la diferencia entre el retraso de salida y el retraso de llegada<br>
+taxi_aprox = dep_delay - arr_delay</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">taxi_aprox =</span> dep_delay <span class="sc">-</span> arr_delay) <span class="sc">%&gt;%</span></span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(taxi_aprox)) <span class="sc">%&gt;%</span></span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(origin) <span class="sc">%&gt;%</span></span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">taxi_promedio =</span> <span class="fu">mean</span>(taxi_aprox),</span>
+<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">taxi_max =</span> <span class="fu">max</span>(taxi_aprox),</span>
+<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">taxi_min =</span> <span class="fu">min</span>(taxi_aprox),</span>
+<span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb68-10"><a href="#cb68-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb68-11"><a href="#cb68-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(taxi_promedio, taxi_max, taxi_min)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 4
+  origin taxi_promedio taxi_max taxi_min
+  &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+1 LGA             4.50       58     -181
+2 EWR             5.90      109     -165
+3 JFK             6.47       87     -196</code></pre>
+</div>
+</div>
+<p>Por otro lado, se hizo un segundo ejercicio considerando otra posible fórmula:<br>
+arr_time - dep_time - air_time</p>
+<p>Con esta segunda fórmula, lo que esperamos es estar considerando el tiempo que existe de la hora de salida y la hora de llegada menos el tiempo de vuelo, lo que idealmente nos daría el tiempo entre el abordaje y el despegue más entre el aterrizaje y el descenso. Esto incluiría tanto taxi_out como taxi_in.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>vuelos <span class="sc">%&gt;%</span>   </span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">taxi_out2 =</span> arr_time <span class="sc">-</span> dep_time <span class="sc">-</span> air_time ) <span class="sc">%&gt;%</span>   </span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(taxi_out2)) <span class="sc">%&gt;%</span>   </span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(origin) <span class="sc">%&gt;%</span>   </span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(     </span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">taxi_out_promedio =</span> <span class="fu">mean</span>(taxi_out2),</span>
+<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">taxi_max =</span> <span class="fu">max</span>(taxi_out2),</span>
+<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">taxi_min =</span> <span class="fu">min</span>(taxi_out2),</span>
+<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span>   </span>
+<span id="cb70-10"><a href="#cb70-10" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span>   </span>
+<span id="cb70-11"><a href="#cb70-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(taxi_out_promedio) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 4
+  origin taxi_out_promedio taxi_max taxi_min
+  &lt;chr&gt;              &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+1 JFK               -56.5       474    -2485
+2 EWR                 2.15      484    -2486
+3 LGA                66.3       370    -2424</code></pre>
+</div>
+</div>
+<p><strong>Interpretación:</strong></p>
+<p>Utilizando una aproximación del tiempo de taxi basada en la diferencia entre el retraso de salida y el retraso de llegada, se observa que el aeropuerto LGA presenta el menor tiempo promedio, seguido por EWR y finalmente JFK. Esto sugiere que, en promedio, los vuelos que salen de LGA experimentan menores retrasos asociados al proceso previo al despegue en comparación con los otros aeropuertos de NYC.</p>
+<p>En ambos casos se obtienen cifras negativas en el cálculo, lo que con la información actual podría ser considerado un error.</p>
+</section>
+<section id="qué-porcentaje-de-vuelos-que-salen-de-cada-aeropuerto-de-nyc-fueron-puntuales" class="level2">
+<h2 class="anchored" data-anchor-id="qué-porcentaje-de-vuelos-que-salen-de-cada-aeropuerto-de-nyc-fueron-puntuales">13. ¿Qué porcentaje de vuelos que salen de cada aeropuerto de NYC fueron puntuales?</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dep_delay)) <span class="sc">%&gt;%</span>   <span class="co"># quitar NA</span></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">puntual =</span> dep_delay <span class="sc">&lt;=</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(origin) <span class="sc">%&gt;%</span></span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">porcentaje_puntuales =</span> <span class="fu">mean</span>(puntual) <span class="sc">*</span> <span class="dv">100</span>,</span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(porcentaje_puntuales))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  origin porcentaje_puntuales
+  &lt;chr&gt;                 &lt;dbl&gt;
+1 LGA                    66.8
+2 JFK                    61.6
+3 EWR                    55.2</code></pre>
+</div>
+</div>
+<p><strong>Interpretación:</strong></p>
+<p>El aeropuerto LGA presenta el mayor porcentaje de vuelos puntuales con el 66.81%, seguido por JFK con un 61.59% y EWR con 55.18%. Esto indica que LGA tiene un mejor desempeño en cuanto al cumplimiento de los horarios de salida, mientras que EWR muestra una mayor proporción de retrasos.</p>
+</section>
+<section id="qué-aeropuertos-de-destino-tienen-el-mayor-retraso-promedio-en-la-llegada-para-vuelos-desde-nyc" class="level2">
+<h2 class="anchored" data-anchor-id="qué-aeropuertos-de-destino-tienen-el-mayor-retraso-promedio-en-la-llegada-para-vuelos-desde-nyc">14. ¿Qué aeropuertos de destino tienen el mayor retraso promedio en la llegada para vuelos desde NYC?</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(arr_delay)) <span class="sc">%&gt;%</span></span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dest) <span class="sc">%&gt;%</span></span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">retraso_promedio =</span> <span class="fu">mean</span>(arr_delay),</span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_vuelos =</span> <span class="fu">n</span>(),</span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb74-9"><a href="#cb74-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(aeropuertos, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"dest"</span> <span class="ot">=</span> <span class="st">"faa"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb74-10"><a href="#cb74-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(dest, name, retraso_promedio, total_vuelos) <span class="sc">%&gt;%</span></span>
+<span id="cb74-11"><a href="#cb74-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(retraso_promedio))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 104 × 4
+   dest  name                          retraso_promedio total_vuelos
+   &lt;chr&gt; &lt;chr&gt;                                    &lt;dbl&gt;        &lt;int&gt;
+ 1 CAE   Columbia Metropolitan                     41.8          106
+ 2 TUL   Tulsa Intl                                33.7          294
+ 3 OKC   Will Rogers World                         30.6          315
+ 4 JAC   Jackson Hole Airport                      28.1           21
+ 5 TYS   Mc Ghee Tyson                             24.1          578
+ 6 MSN   Dane Co Rgnl Truax Fld                    20.2          556
+ 7 RIC   Richmond Intl                             20.1         2346
+ 8 CAK   Akron Canton Regional Airport             19.7          842
+ 9 DSM   Des Moines Intl                           19.0          523
+10 GRR   Gerald R Ford Intl                        18.2          728
+# ℹ 94 more rows</code></pre>
+</div>
+</div>
+<p><strong>Interpretación:</strong></p>
+<p>Los aeropuertos de destino con mayor retraso promedio en la llegada incluyen <strong>Columbia Metropolitan, Tulsa International y Will Rogers World</strong>. Estos destinos presentan demoras significativamente más altas en comparación con otros, lo que podría estar relacionado con factores operativos, distancia o condiciones externas. En general, se observa que ciertos aeropuertos concentran mayores niveles de retraso en la llegada de vuelos provenientes de NYC.</p>
+</section>
+<section id="cómo-varían-los-retrasos-en-la-salida-según-la-hora-del-día-en-cada-aeropuerto-de-nyc" class="level2">
+<h2 class="anchored" data-anchor-id="cómo-varían-los-retrasos-en-la-salida-según-la-hora-del-día-en-cada-aeropuerto-de-nyc">15. ¿Cómo varían los retrasos en la salida según la hora del día en cada aeropuerto de NYC?</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dep_delay)) <span class="sc">%&gt;%</span>   <span class="co"># quitar NAs</span></span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(origin, hour) <span class="sc">%&gt;%</span></span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">retraso_promedio =</span> <span class="fu">mean</span>(dep_delay),</span>
+<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_vuelos =</span> <span class="fu">n</span>(),</span>
+<span id="cb76-7"><a href="#cb76-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb76-8"><a href="#cb76-8" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">%&gt;%</span></span>
+<span id="cb76-9"><a href="#cb76-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(retraso_promedio))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 56 × 4
+   origin  hour retraso_promedio total_vuelos
+   &lt;chr&gt;  &lt;dbl&gt;            &lt;dbl&gt;        &lt;int&gt;
+ 1 EWR       19             31.1         5748
+ 2 EWR       20             27.5         6777
+ 3 EWR       22             26.6           61
+ 4 EWR       21             26.1         4225
+ 5 JFK       21             26.1         3413
+ 6 LGA       22             25.8          192
+ 7 EWR       17             25.3         8402
+ 8 EWR       18             25.1         6873
+ 9 EWR       16             23.1         7327
+10 LGA       20             22.5         3245
+# ℹ 46 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dep_delay)) <span class="sc">%&gt;%</span></span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(origin, hour) <span class="sc">%&gt;%</span></span>
+<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">retraso_promedio =</span> <span class="fu">mean</span>(dep_delay),</span>
+<span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb78-9"><a href="#cb78-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb78-10"><a href="#cb78-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> hour, <span class="at">y =</span> retraso_promedio, <span class="at">color =</span> origin)) <span class="sc">+</span></span>
+<span id="cb78-11"><a href="#cb78-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb78-12"><a href="#cb78-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb78-13"><a href="#cb78-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Retraso promedio de salida por hora y aeropuerto"</span>,</span>
+<span id="cb78-14"><a href="#cb78-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Hora del día"</span>,</span>
+<span id="cb78-15"><a href="#cb78-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Retraso promedio (min)"</span></span>
+<span id="cb78-16"><a href="#cb78-16" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección-1-en-R_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Interpretación:</strong></p>
+<p>Se observa un patrón creciente en los retrasos de salida a lo largo del día, con menores demoras en las primeras horas y mayores hacia la tarde y noche. Esto sugiere un efecto acumulativo de retrasos. Asimismo, existen diferencias entre aeropuertos, lo que podría reflejar variaciones en la demanda, capacidad operativa o niveles de congestión.</p>
+</section>
+<section id="cuál-es-la-correlación-entre-la-velocidad-del-viento-y-los-retrasos-en-la-salida" class="level2">
+<h2 class="anchored" data-anchor-id="cuál-es-la-correlación-entre-la-velocidad-del-viento-y-los-retrasos-en-la-salida">16. ¿Cuál es la correlación entre la velocidad del viento y los retrasos en la salida?</h2>
+<p><strong>Primera consulta:</strong> Se deja una correlación entre las condiciones climáticas y el desface en la salida de los vuelos</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>clima <span class="ot">&lt;-</span> <span class="fu">dbReadTable</span>(con, <span class="st">"clima"</span>)</span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(clima, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"origin"</span>, <span class="st">"time_hour"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dep_delay), <span class="sc">!</span><span class="fu">is.na</span>(wind_speed)) <span class="sc">%&gt;%</span></span>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">correlacion =</span> <span class="fu">cor</span>(dep_delay, wind_speed)</span>
+<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  correlacion
+1  0.04742427</code></pre>
+</div>
+</div>
+<p><strong>Segunda consulta:</strong> Se considera sólo la influencia que podría tener el clima únicamente en los retrasos (dep_delay&gt;0).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>clima <span class="ot">&lt;-</span> <span class="fu">dbReadTable</span>(con, <span class="st">"clima"</span>)</span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(clima, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"origin"</span>, <span class="st">"time_hour"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dep_delay), dep_delay<span class="sc">&gt;</span><span class="dv">0</span> , <span class="sc">!</span><span class="fu">is.na</span>(wind_speed)) <span class="sc">%&gt;%</span></span>
+<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb81-6"><a href="#cb81-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">correlacion =</span> <span class="fu">cor</span>(dep_delay, wind_speed)</span>
+<span id="cb81-7"><a href="#cb81-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  correlacion
+1  0.02798317</code></pre>
+</div>
+</div>
+<p><strong>Interpretación:</strong></p>
+<p>La correlación es muy cercana a cero en ambos casos, lo que indica que no existe una relación significativa entre la velocidad del viento y los retrasos en la salida.</p>
+</section>
+<section id="los-vuelos-experimentan-más-retrasos-en-días-con-lluvias-intensas" class="level2">
+<h2 class="anchored" data-anchor-id="los-vuelos-experimentan-más-retrasos-en-días-con-lluvias-intensas">17. ¿Los vuelos experimentan más retrasos en días con lluvias intensas?</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(clima, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"origin"</span>, <span class="st">"time_hour"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dep_delay), <span class="sc">!</span><span class="fu">is.na</span>(precip)) <span class="sc">%&gt;%</span></span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lluvia_intensa =</span> precip <span class="sc">&gt;</span> <span class="fl">0.3</span>) <span class="sc">%&gt;%</span> <span class="co"># lluvia intensa </span></span>
+<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(lluvia_intensa) <span class="sc">%&gt;%</span></span>
+<span id="cb83-6"><a href="#cb83-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb83-7"><a href="#cb83-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">retraso_promedio =</span> <span class="fu">mean</span>(dep_delay),</span>
+<span id="cb83-8"><a href="#cb83-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_vuelos =</span> <span class="fu">n</span>(),</span>
+<span id="cb83-9"><a href="#cb83-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb83-10"><a href="#cb83-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  lluvia_intensa retraso_promedio total_vuelos
+  &lt;lgl&gt;                     &lt;dbl&gt;        &lt;int&gt;
+1 FALSE                      12.6       326284
+2 TRUE                       46.0          709</code></pre>
+</div>
+</div>
+<p><strong>Interpretación:</strong></p>
+<p>Se consideró lluvia intensa cuando la precipitación supera 0.3 pulgadas, ya que este valor corresponde a condiciones de lluvia fuerte.</p>
+<p>Los vuelos que ocurren durante condiciones de lluvia intensa presentan un retraso promedio significativamente mayor (46.05 minutos) en comparación con aquellos sin lluvia intensa (12.56 minutos). Esto indica que la lluvia fuerte tiene un impacto considerable en la puntualidad de los vuelos, generando demoras importantes en las salidas. Sin embargo, es importante notar que el número de vuelos bajo lluvia intensa es mucho menor, por lo que los resultados deben interpretarse con cierta cautela.</p>
+</section>
+<section id="cómo-afecta-la-temperatura-a-los-retrasos-de-los-vuelos" class="level2">
+<h2 class="anchored" data-anchor-id="cómo-afecta-la-temperatura-a-los-retrasos-de-los-vuelos">18. ¿Cómo afecta la temperatura a los retrasos de los vuelos?</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(clima, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"origin"</span>, <span class="st">"time_hour"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dep_delay), <span class="sc">!</span><span class="fu">is.na</span>(temp)) <span class="sc">%&gt;%</span></span>
+<span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb85-5"><a href="#cb85-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">correlacion =</span> <span class="fu">cor</span>(dep_delay, temp)</span>
+<span id="cb85-6"><a href="#cb85-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  correlacion
+1  0.06149127</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>  vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(clima, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"origin"</span>, <span class="st">"time_hour"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dep_delay), <span class="sc">!</span><span class="fu">is.na</span>(temp)),</span>
+<span id="cb87-5"><a href="#cb87-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> temp, <span class="at">y =</span> dep_delay)</span>
+<span id="cb87-6"><a href="#cb87-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb87-7"><a href="#cb87-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb87-8"><a href="#cb87-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span> </span>
+<span id="cb87-9"><a href="#cb87-9" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(</span>
+<span id="cb87-10"><a href="#cb87-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Relación entre temperatura y retraso en salida"</span>,</span>
+<span id="cb87-11"><a href="#cb87-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Temperatura"</span>,</span>
+<span id="cb87-12"><a href="#cb87-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Retraso en salida (minutos)"</span></span>
+<span id="cb87-13"><a href="#cb87-13" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección-1-en-R_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Zoom a la regresión lineal.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>  vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(clima, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"origin"</span>, <span class="st">"time_hour"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb89-4"><a href="#cb89-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dep_delay), <span class="sc">!</span><span class="fu">is.na</span>(temp)),</span>
+<span id="cb89-5"><a href="#cb89-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> temp, <span class="at">y =</span> dep_delay)</span>
+<span id="cb89-6"><a href="#cb89-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb89-7"><a href="#cb89-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb89-8"><a href="#cb89-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección-1-en-R_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Obtengo el promedio general de retraso de toda la fuente de datos</span></span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>promedio_global <span class="ot">&lt;-</span> vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(clima, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"origin"</span>, <span class="st">"time_hour"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dep_delay), <span class="sc">!</span><span class="fu">is.na</span>(temp)) <span class="sc">%&gt;%</span></span>
+<span id="cb91-5"><a href="#cb91-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb91-6"><a href="#cb91-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">media_total =</span> <span class="fu">mean</span>(dep_delay)</span>
+<span id="cb91-7"><a href="#cb91-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb91-8"><a href="#cb91-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(media_total)</span>
+<span id="cb91-9"><a href="#cb91-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-10"><a href="#cb91-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-11"><a href="#cb91-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb91-12"><a href="#cb91-12" aria-hidden="true" tabindex="-1"></a>  vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb91-13"><a href="#cb91-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(clima, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"origin"</span>, <span class="st">"time_hour"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb91-14"><a href="#cb91-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dep_delay), <span class="sc">!</span><span class="fu">is.na</span>(temp)) <span class="sc">%&gt;%</span></span>
+<span id="cb91-15"><a href="#cb91-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">rango_temp =</span> <span class="fu">round</span>(temp <span class="sc">/</span> <span class="dv">5</span>) <span class="sc">*</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb91-16"><a href="#cb91-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(rango_temp) <span class="sc">%&gt;%</span></span>
+<span id="cb91-17"><a href="#cb91-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb91-18"><a href="#cb91-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">retraso_promedio =</span> <span class="fu">mean</span>(dep_delay),</span>
+<span id="cb91-19"><a href="#cb91-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb91-20"><a href="#cb91-20" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb91-21"><a href="#cb91-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> rango_temp, <span class="at">y =</span> retraso_promedio)</span>
+<span id="cb91-22"><a href="#cb91-22" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb91-23"><a href="#cb91-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb91-24"><a href="#cb91-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb91-25"><a href="#cb91-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(</span>
+<span id="cb91-26"><a href="#cb91-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">yintercept =</span> promedio_global,</span>
+<span id="cb91-27"><a href="#cb91-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">linetype =</span> <span class="st">"dashed"</span>,</span>
+<span id="cb91-28"><a href="#cb91-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"red"</span>,</span>
+<span id="cb91-29"><a href="#cb91-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="dv">1</span></span>
+<span id="cb91-30"><a href="#cb91-30" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb91-31"><a href="#cb91-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-32"><a href="#cb91-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb91-33"><a href="#cb91-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Retraso promedio por rango de temperatura"</span>,</span>
+<span id="cb91-34"><a href="#cb91-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"La línea roja representa el retraso promedio global"</span>,</span>
+<span id="cb91-35"><a href="#cb91-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Temperatura (rango)"</span>,</span>
+<span id="cb91-36"><a href="#cb91-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Retraso promedio (minutos)"</span></span>
+<span id="cb91-37"><a href="#cb91-37" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb91-38"><a href="#cb91-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección-1-en-R_files/figure-html/unnamed-chunk-45-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Interpretación:</strong></p>
+<p>La correlación entre la temperatura y los retrasos en la salida es de 0.061, lo que indica una relación positiva muy débil. Esto sugiere que la temperatura no tiene un impacto lineal en los retrasos de los vuelos; sin embargo, PODRÍA ser que hubiera un punto de quiebre en la temperatura alrededor de los 70 grados, donde los cambios en esta variable se asocien con variaciones en los retrasos.</p>
+</section>
+<section id="cómo-afectan-los-niveles-de-visibilidad-a-los-retrasos-en-la-llegada" class="level2">
+<h2 class="anchored" data-anchor-id="cómo-afectan-los-niveles-de-visibilidad-a-los-retrasos-en-la-llegada">19. ¿Cómo afectan los niveles de visibilidad a los retrasos en la llegada?</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(clima, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"origin"</span>, <span class="st">"time_hour"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(arr_delay), <span class="sc">!</span><span class="fu">is.na</span>(visib)) <span class="sc">%&gt;%</span></span>
+<span id="cb92-4"><a href="#cb92-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb92-5"><a href="#cb92-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">correlacion =</span> <span class="fu">cor</span>(arr_delay, visib)</span>
+<span id="cb92-6"><a href="#cb92-6" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  correlacion
+1  -0.1355355</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>visib_delay_r <span class="ot">&lt;-</span> vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(clima, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"origin"</span>, <span class="st">"time_hour"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(arr_delay), arr_delay <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="sc">!</span><span class="fu">is.na</span>(visib)) <span class="sc">%&gt;%</span></span>
+<span id="cb94-4"><a href="#cb94-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb94-5"><a href="#cb94-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">rango_visib =</span> <span class="fu">case_when</span>(</span>
+<span id="cb94-6"><a href="#cb94-6" aria-hidden="true" tabindex="-1"></a>      visib <span class="sc">&lt;=</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">"1.Muy baja"</span>,</span>
+<span id="cb94-7"><a href="#cb94-7" aria-hidden="true" tabindex="-1"></a>      visib <span class="sc">&lt;=</span> <span class="dv">3</span> <span class="sc">~</span> <span class="st">"2.Baja"</span>,</span>
+<span id="cb94-8"><a href="#cb94-8" aria-hidden="true" tabindex="-1"></a>      visib <span class="sc">&lt;=</span> <span class="dv">6</span> <span class="sc">~</span> <span class="st">"3.Media"</span>,</span>
+<span id="cb94-9"><a href="#cb94-9" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span>       <span class="sc">~</span> <span class="st">"4.Alta"</span></span>
+<span id="cb94-10"><a href="#cb94-10" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb94-11"><a href="#cb94-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb94-12"><a href="#cb94-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(rango_visib) <span class="sc">%&gt;%</span></span>
+<span id="cb94-13"><a href="#cb94-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb94-14"><a href="#cb94-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">retraso_promedio =</span> <span class="fu">mean</span>(arr_delay),</span>
+<span id="cb94-15"><a href="#cb94-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">vuelos =</span> <span class="fu">n</span>(),</span>
+<span id="cb94-16"><a href="#cb94-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb94-17"><a href="#cb94-17" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb94-18"><a href="#cb94-18" aria-hidden="true" tabindex="-1"></a>visib_delay_r</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 3
+  rango_visib retraso_promedio vuelos
+  &lt;chr&gt;                  &lt;dbl&gt;  &lt;int&gt;
+1 1.Muy baja              63.0   3131
+2 2.Baja                  50.9   6394
+3 3.Media                 49.5   6425
+4 4.Alta                  38.7 116289</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(visib_delay_r, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(rango_visib), <span class="at">y =</span> retraso_promedio)) <span class="sc">+</span></span>
+<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb96-4"><a href="#cb96-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Retraso promedio en llegada por rango de visibilidad"</span>,</span>
+<span id="cb96-5"><a href="#cb96-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Visibilidad"</span>,</span>
+<span id="cb96-6"><a href="#cb96-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Retraso promedio"</span></span>
+<span id="cb96-7"><a href="#cb96-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb96-8"><a href="#cb96-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección-1-en-R_files/figure-html/unnamed-chunk-47-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>df_barras <span class="ot">&lt;-</span> vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(clima, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"origin"</span>, <span class="st">"time_hour"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(arr_delay), <span class="sc">!</span><span class="fu">is.na</span>(visib)) <span class="sc">%&gt;%</span></span>
+<span id="cb97-4"><a href="#cb97-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rango_visib =</span> <span class="fu">round</span>(visib <span class="sc">/</span> <span class="dv">2</span>) <span class="sc">*</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb97-5"><a href="#cb97-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(rango_visib) <span class="sc">%&gt;%</span></span>
+<span id="cb97-6"><a href="#cb97-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb97-7"><a href="#cb97-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">retraso_promedio =</span> <span class="fu">mean</span>(arr_delay),</span>
+<span id="cb97-8"><a href="#cb97-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb97-9"><a href="#cb97-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb97-10"><a href="#cb97-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb97-11"><a href="#cb97-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_barras, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(rango_visib), <span class="at">y =</span> retraso_promedio)) <span class="sc">+</span></span>
+<span id="cb97-12"><a href="#cb97-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb97-13"><a href="#cb97-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb97-14"><a href="#cb97-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Retraso promedio en llegada por rango de visibilidad"</span>,</span>
+<span id="cb97-15"><a href="#cb97-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Visibilidad"</span>,</span>
+<span id="cb97-16"><a href="#cb97-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Retraso promedio"</span></span>
+<span id="cb97-17"><a href="#cb97-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb97-18"><a href="#cb97-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección-1-en-R_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a>  vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(clima, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"origin"</span>, <span class="st">"time_hour"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb98-4"><a href="#cb98-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(arr_delay), <span class="sc">!</span><span class="fu">is.na</span>(visib)),</span>
+<span id="cb98-5"><a href="#cb98-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> visib, <span class="at">y =</span> arr_delay)</span>
+<span id="cb98-6"><a href="#cb98-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb98-7"><a href="#cb98-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb98-8"><a href="#cb98-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección-1-en-R_files/figure-html/unnamed-chunk-49-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>zoom a la línea de tendencia…</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(</span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>  vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(clima, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"origin"</span>, <span class="st">"time_hour"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb100-4"><a href="#cb100-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(arr_delay), <span class="sc">!</span><span class="fu">is.na</span>(visib)),</span>
+<span id="cb100-5"><a href="#cb100-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> visib, <span class="at">y =</span> arr_delay)</span>
+<span id="cb100-6"><a href="#cb100-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb100-7"><a href="#cb100-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb100-8"><a href="#cb100-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección-1-en-R_files/figure-html/unnamed-chunk-50-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Interpretación:</strong></p>
+<p>La correlación entre la visibilidad y los retrasos en la llegada es de -0.136, lo que indica una relación negativa débil. Esto sugiere que a menor visibilidad, los vuelos tienden a experimentar mayores retrasos en la llegada. Sin embargo, la relación no es fuerte, por lo que la visibilidad por sí sola no explica completamente los retrasos.</p>
+<p>Los diferentes gráficos, agrupados en categorías y por rangos, muestran que si podría haber una relación inversa entre los retrasos y la visibilidad, a pesar de que la correlación no lo muestra fuertemente.</p>
+</section>
+<section id="la-alta-humedad-se-relaciona-de-alguna-manera-con-los-tiempos-de-taxi-out-más-largos" class="level2">
+<h2 class="anchored" data-anchor-id="la-alta-humedad-se-relaciona-de-alguna-manera-con-los-tiempos-de-taxi-out-más-largos">20. ¿La alta humedad se relaciona de alguna manera con los tiempos de taxi-out más largos?</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>humedad_taxi_r <span class="ot">&lt;-</span> vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(</span>
+<span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a>    clima, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"origin"</span>, <span class="st">"time_hour"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb102-4"><a href="#cb102-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb102-5"><a href="#cb102-5" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(dep_delay),</span>
+<span id="cb102-6"><a href="#cb102-6" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(arr_delay),</span>
+<span id="cb102-7"><a href="#cb102-7" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(humid)</span>
+<span id="cb102-8"><a href="#cb102-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb102-9"><a href="#cb102-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb102-10"><a href="#cb102-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">taxi_out =</span> dep_delay <span class="sc">-</span> arr_delay,</span>
+<span id="cb102-11"><a href="#cb102-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">rango_humedad =</span> <span class="fu">case_when</span>(</span>
+<span id="cb102-12"><a href="#cb102-12" aria-hidden="true" tabindex="-1"></a>      humid <span class="sc">&lt;</span> <span class="dv">60</span> <span class="sc">~</span> <span class="st">"1.Baja"</span>,</span>
+<span id="cb102-13"><a href="#cb102-13" aria-hidden="true" tabindex="-1"></a>      humid <span class="sc">&lt;=</span> <span class="dv">80</span> <span class="sc">~</span> <span class="st">"2.Media"</span>,</span>
+<span id="cb102-14"><a href="#cb102-14" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"3.Alta"</span></span>
+<span id="cb102-15"><a href="#cb102-15" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb102-16"><a href="#cb102-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb102-17"><a href="#cb102-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(rango_humedad) <span class="sc">%&gt;%</span></span>
+<span id="cb102-18"><a href="#cb102-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb102-19"><a href="#cb102-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">taxi_out_promedio =</span> <span class="fu">mean</span>(taxi_out),</span>
+<span id="cb102-20"><a href="#cb102-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">vuelos =</span> <span class="fu">n</span>(),</span>
+<span id="cb102-21"><a href="#cb102-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb102-22"><a href="#cb102-22" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb102-23"><a href="#cb102-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-24"><a href="#cb102-24" aria-hidden="true" tabindex="-1"></a>humedad_taxi_r</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  rango_humedad taxi_out_promedio vuelos
+  &lt;chr&gt;                     &lt;dbl&gt;  &lt;int&gt;
+1 1.Baja                     6.88 177599
+2 2.Media                    5.98  86619
+3 3.Alta                     1.75  61584</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(humedad_taxi_r, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(rango_humedad), <span class="at">y =</span> taxi_out_promedio)) <span class="sc">+</span></span>
+<span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb104-3"><a href="#cb104-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb104-4"><a href="#cb104-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Taxi out y Humedad"</span>,</span>
+<span id="cb104-5"><a href="#cb104-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Humedad"</span>,</span>
+<span id="cb104-6"><a href="#cb104-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Taxi Out"</span></span>
+<span id="cb104-7"><a href="#cb104-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb104-8"><a href="#cb104-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección-1-en-R_files/figure-html/unnamed-chunk-51-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>humedad_resumen <span class="ot">&lt;-</span> vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(</span>
+<span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a>    clima,</span>
+<span id="cb105-4"><a href="#cb105-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"origin"</span>, <span class="st">"time_hour"</span>)</span>
+<span id="cb105-5"><a href="#cb105-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb105-6"><a href="#cb105-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb105-7"><a href="#cb105-7" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(dep_delay),</span>
+<span id="cb105-8"><a href="#cb105-8" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(arr_delay),</span>
+<span id="cb105-9"><a href="#cb105-9" aria-hidden="true" tabindex="-1"></a>    <span class="sc">!</span><span class="fu">is.na</span>(humid)</span>
+<span id="cb105-10"><a href="#cb105-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb105-11"><a href="#cb105-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb105-12"><a href="#cb105-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">rango_humedad =</span> <span class="fu">round</span>(humid <span class="sc">/</span> <span class="dv">10</span>) <span class="sc">*</span> <span class="dv">10</span>,</span>
+<span id="cb105-13"><a href="#cb105-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">taxi_out =</span> dep_delay <span class="sc">-</span> arr_delay</span>
+<span id="cb105-14"><a href="#cb105-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb105-15"><a href="#cb105-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(rango_humedad) <span class="sc">%&gt;%</span></span>
+<span id="cb105-16"><a href="#cb105-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb105-17"><a href="#cb105-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_taxi_out  =</span> <span class="fu">mean</span>(taxi_out),</span>
+<span id="cb105-18"><a href="#cb105-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_arr_delay =</span> <span class="fu">mean</span>(arr_delay),</span>
+<span id="cb105-19"><a href="#cb105-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_dep_delay =</span> <span class="fu">mean</span>(dep_delay),</span>
+<span id="cb105-20"><a href="#cb105-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">vuelos =</span> <span class="fu">n</span>(),</span>
+<span id="cb105-21"><a href="#cb105-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb105-22"><a href="#cb105-22" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb105-23"><a href="#cb105-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(rango_humedad)</span>
+<span id="cb105-24"><a href="#cb105-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-25"><a href="#cb105-25" aria-hidden="true" tabindex="-1"></a>humedad_resumen</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 5
+   rango_humedad mean_taxi_out mean_arr_delay mean_dep_delay vuelos
+           &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;          &lt;dbl&gt;  &lt;int&gt;
+ 1            10         0.311           9.63           9.94     90
+ 2            20         7.47            3.65          11.1    6772
+ 3            30         6.59            2.02           8.61  26342
+ 4            40         6.54            1.79           8.34  56429
+ 5            50         6.98            2.04           9.02  60568
+ 6            60         7.14            2.98          10.1   51001
+ 7            70         6.12            7.58          13.7   44492
+ 8            80         4.06           12.5           16.6   37721
+ 9            90         1.28           22.1           23.4   35494
+10           100        -0.536          28.0           27.5    6893</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(humedad_resumen,</span>
+<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(rango_humedad),</span>
+<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> mean_taxi_out)) <span class="sc">+</span></span>
+<span id="cb107-4"><a href="#cb107-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb107-5"><a href="#cb107-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb107-6"><a href="#cb107-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Taxi-out promedio según rango de humedad"</span>,</span>
+<span id="cb107-7"><a href="#cb107-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Humedad relativa (%)"</span>,</span>
+<span id="cb107-8"><a href="#cb107-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Taxi-out promedio (minutos)"</span></span>
+<span id="cb107-9"><a href="#cb107-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb107-10"><a href="#cb107-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit-Sección-1-en-R_files/figure-html/unnamed-chunk-52-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>vuelos <span class="sc">%&gt;%</span></span>
+<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(clima, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"origin"</span>, <span class="st">"time_hour"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">taxi_aprox =</span> dep_delay <span class="sc">-</span> arr_delay) <span class="sc">%&gt;%</span></span>
+<span id="cb108-4"><a href="#cb108-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(taxi_aprox), <span class="sc">!</span><span class="fu">is.na</span>(humid)) <span class="sc">%&gt;%</span></span>
+<span id="cb108-5"><a href="#cb108-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb108-6"><a href="#cb108-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">correlacion =</span> <span class="fu">cor</span>(taxi_aprox, humid)</span>
+<span id="cb108-7"><a href="#cb108-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  correlacion
+1 -0.08983275</code></pre>
+</div>
+</div>
+<p><strong>Interpretación:</strong></p>
+<p>La correlación entre la humedad y el tiempo de taxi-out aproximado es de -0.090, lo que indica una relación negativa débil. Esto sugiere que la humedad tiene un impacto muy limitado en los tiempos de taxi antes del despegue. Aunque podría esperarse que condiciones de alta humedad influyan en las operaciones, los datos muestran que su efecto es prácticamente insignificante.</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
