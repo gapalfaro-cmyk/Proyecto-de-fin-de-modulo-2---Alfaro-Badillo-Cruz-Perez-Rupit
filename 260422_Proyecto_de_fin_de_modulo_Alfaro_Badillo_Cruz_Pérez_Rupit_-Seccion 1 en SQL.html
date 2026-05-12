@@ -1,0 +1,2061 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Gabriela Alfaro Prieto, Casandra Medea Badillo Salas, Emmanuel Cruz Durán, Gabriela Pérez González, Livia Alejandra Rupit Rupit">
+
+<title>Proyecto de fin de Módulo-1a Parte con sintaxis SQL</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit_-Seccion 1 en SQL_files/libs/clipboard/clipboard.min.js"></script>
+<script src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit_-Seccion 1 en SQL_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit_-Seccion 1 en SQL_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit_-Seccion 1 en SQL_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit_-Seccion 1 en SQL_files/libs/quarto-html/popper.min.js"></script>
+<script src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit_-Seccion 1 en SQL_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit_-Seccion 1 en SQL_files/libs/quarto-html/anchor.min.js"></script>
+<link href="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit_-Seccion 1 en SQL_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit_-Seccion 1 en SQL_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit_-Seccion 1 en SQL_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit_-Seccion 1 en SQL_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="260422_Proyecto_de_fin_de_modulo_Alfaro_Badillo_Cruz_Pérez_Rupit_-Seccion 1 en SQL_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Proyecto de fin de Módulo-1a Parte con sintaxis SQL</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Gabriela Alfaro Prieto, Casandra Medea Badillo Salas, Emmanuel Cruz Durán, Gabriela Pérez González, Livia Alejandra Rupit Rupit </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Invalid Date</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="proyecto-de-fin-de-módulo" class="level2">
+<h2 class="anchored" data-anchor-id="proyecto-de-fin-de-módulo">Proyecto de fin de módulo</h2>
+<p><strong>Primera parte - R: Vuelos de NYC</strong></p>
+<p>Responda las siguientes preguntas de 2 formas. Una utilizando verbos de {dplyr} (NO EN ESTE ARCHIVO) y la otra <strong>con sintaxis SQL</strong> (SI EN ESTE ARCHIVO):</p>
+<ul>
+<li>Instalación de librerías necesarias install.packages(c(“DBI”, “RSQLite”, “dplyr”, “dbplyr”, “lubridate”, “ggplot2”))</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'DBI' was built under R version 4.5.3</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RSQLite) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'RSQLite' was built under R version 4.5.3</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'dplyr' was built under R version 4.5.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Adjuntando el paquete: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dbplyr) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'dbplyr' was built under R version 4.5.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Adjuntando el paquete: 'dbplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:dplyr':
+
+    ident, sql</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'lubridate' was built under R version 4.5.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Adjuntando el paquete: 'lubridate'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    date, intersect, setdiff, union</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul>
+<li>Conexión con la base de datos (local)</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">SQLite</span>(), <span class="st">"C:/Users/Usuario/Documents/Diplomado Analisis de Ciencia de Datos/Pre-Clase/Modulo 2/Modulo 2 - Proyecto/vuelos.db"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul>
+<li>Revisión de conexión y tablas disponibles</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(con)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "aerolineas"  "aeropuertos" "aviones"     "clima"       "vuelos"     </code></pre>
+</div>
+</div>
+<ul>
+<li>Preparación de dataframes</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>aerolineas <span class="ot">&lt;-</span> <span class="fu">dbReadTable</span>(con, <span class="st">"aerolineas"</span>) </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>aeropuertos <span class="ot">&lt;-</span> <span class="fu">dbReadTable</span>(con, <span class="st">"aeropuertos"</span>) </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>aviones <span class="ot">&lt;-</span> <span class="fu">dbReadTable</span>(con, <span class="st">"aviones"</span>) </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>clima <span class="ot">&lt;-</span> <span class="fu">dbReadTable</span>(con, <span class="st">"clima"</span>) </span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>vuelos <span class="ot">&lt;-</span> <span class="fu">dbReadTable</span>(con, <span class="st">"vuelos"</span>)   </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(vuelos)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "data.frame"</code></pre>
+</div>
+</div>
+<ul>
+<li>Vistazo de los DF</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(con, <span class="st">"PRAGMA table_info(aerolineas);"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  cid    name type notnull dflt_value pk
+1   0 carrier TEXT       0         NA  0
+2   1    name TEXT       0         NA  0</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(con, <span class="st">"PRAGMA table_info(aeropuertos);"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  cid  name type notnull dflt_value pk
+1   0   faa TEXT       0         NA  0
+2   1  name TEXT       0         NA  0
+3   2   lat REAL       0         NA  0
+4   3   lon REAL       0         NA  0
+5   4   alt REAL       0         NA  0
+6   5    tz REAL       0         NA  0
+7   6   dst TEXT       0         NA  0
+8   7 tzone TEXT       0         NA  0</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(con, <span class="st">"PRAGMA table_info(aviones);"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  cid         name    type notnull dflt_value pk
+1   0      tailnum    TEXT       0         NA  0
+2   1         year INTEGER       0         NA  0
+3   2         type    TEXT       0         NA  0
+4   3 manufacturer    TEXT       0         NA  0
+5   4        model    TEXT       0         NA  0
+6   5      engines INTEGER       0         NA  0
+7   6        seats INTEGER       0         NA  0
+8   7        speed INTEGER       0         NA  0
+9   8       engine    TEXT       0         NA  0</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(con, <span class="st">"PRAGMA table_info(clima);"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   cid       name    type notnull dflt_value pk
+1    0     origin    TEXT       0         NA  0
+2    1       year INTEGER       0         NA  0
+3    2      month INTEGER       0         NA  0
+4    3        day INTEGER       0         NA  0
+5    4       hour INTEGER       0         NA  0
+6    5       temp    REAL       0         NA  0
+7    6       dewp    REAL       0         NA  0
+8    7      humid    REAL       0         NA  0
+9    8   wind_dir    REAL       0         NA  0
+10   9 wind_speed    REAL       0         NA  0
+11  10  wind_gust    REAL       0         NA  0
+12  11     precip    REAL       0         NA  0
+13  12   pressure    REAL       0         NA  0
+14  13      visib    REAL       0         NA  0
+15  14  time_hour    REAL       0         NA  0</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(con, <span class="st">"PRAGMA table_info(vuelos);"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   cid           name    type notnull dflt_value pk
+1    0           year INTEGER       0         NA  0
+2    1          month INTEGER       0         NA  0
+3    2            day INTEGER       0         NA  0
+4    3       dep_time INTEGER       0         NA  0
+5    4 sched_dep_time INTEGER       0         NA  0
+6    5      dep_delay    REAL       0         NA  0
+7    6       arr_time INTEGER       0         NA  0
+8    7 sched_arr_time INTEGER       0         NA  0
+9    8      arr_delay    REAL       0         NA  0
+10   9        carrier    TEXT       0         NA  0
+11  10         flight INTEGER       0         NA  0
+12  11        tailnum    TEXT       0         NA  0
+13  12         origin    TEXT       0         NA  0
+14  13           dest    TEXT       0         NA  0
+15  14       air_time    REAL       0         NA  0
+16  15       distance    REAL       0         NA  0
+17  16           hour    REAL       0         NA  0
+18  17         minute    REAL       0         NA  0
+19  18      time_hour    REAL       0         NA  0</code></pre>
+</div>
+</div>
+<ul>
+<li>Para ver el detalle de los DF, Se puede cambiar por los nombres de los otros DF (“aerolineas” “aeropuertos” “aviones” “clima” “vuelos” )</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(aerolineas); </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 16
+Columns: 2
+$ carrier &lt;chr&gt; "9E", "AA", "AS", "B6", "DL", "EV", "F9", "FL", "HA", "MQ", "O…
+$ name    &lt;chr&gt; "Endeavor Air Inc.", "American Airlines Inc.", "Alaska Airline…</code></pre>
+</div>
+</div>
+</section>
+<section id="pregunta-1.-qué-aerolínea-tuvo-el-mayor-retraso-promedio-en-la-salida-en-2013" class="level1">
+<h1>Pregunta 1.# ¿Qué aerolínea tuvo el mayor retraso promedio en la salida en 2013?</h1>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>query_P1 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT      </span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="st">  a.name AS aerolinea,     </span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="st">  AVG(v.dep_delay) AS retraso_promedio_salida,     </span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="st">  COUNT(*) AS vuelos FROM vuelos v </span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN aerolineas a   ON v.carrier = a.carrier     </span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="st">WHERE v.dep_delay IS NOT NULL GROUP BY a.name ORDER BY retraso_promedio_salida DESC; "</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>resultado_P1 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P1) </span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>resultado_P1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                     aerolinea retraso_promedio_salida vuelos
+1       Frontier Airlines Inc.               20.215543    682
+2     ExpressJet Airlines Inc.               19.955390  51356
+3           Mesa Airlines Inc.               18.996330    545
+4  AirTran Airways Corporation               18.726075   3187
+5       Southwest Airlines Co.               17.711744  12083
+6            Endeavor Air Inc.               16.725769  17416
+7              JetBlue Airways               13.022522  54169
+8               Virgin America               12.869421   5131
+9        SkyWest Airlines Inc.               12.586207     29
+10       United Air Lines Inc.               12.106073  57979
+11                   Envoy Air               10.552041  25163
+12        Delta Air Lines Inc.                9.264505  47761
+13      American Airlines Inc.                8.586016  32093
+14        Alaska Airlines Inc.                5.804775    712
+15      Hawaiian Airlines Inc.                4.900585    342
+16             US Airways Inc.                3.782418  19873</code></pre>
+</div>
+</div>
+</section>
+<section id="pregunta-1.v2.-qué-aerolínea-tuvo-el-mayor-retraso-promedio-en-la-salida-en-2013.-considerando-sólo-los-que-tienen-retraso." class="level1">
+<h1>Pregunta 1.v2. # ¿Qué aerolínea tuvo el mayor retraso promedio en la salida en 2013?. Considerando SÓlO los que tienen RETRASO.</h1>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>query_P1v2 <span class="ot">&lt;-</span> <span class="st">"     </span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT      </span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="st">  a.name AS aerolinea,     </span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="st">  AVG(v.dep_delay) AS retraso_promedio_salida,     </span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="st">  COUNT(*) AS vuelos FROM vuelos v </span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN aerolineas a   ON v.carrier = a.carrier </span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="st">WHERE v.dep_delay IS NOT NULL   AND v.dep_delay &gt; 0 </span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="st">GROUP BY a.name </span></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY retraso_promedio_salida DESC; </span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>resultado_P1v2 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P1v2) </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>resultado_P1v2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                     aerolinea retraso_promedio_salida vuelos
+1        SkyWest Airlines Inc.                58.00000      9
+2           Mesa Airlines Inc.                52.95279    233
+3     ExpressJet Airlines Inc.                50.32979  23139
+4            Endeavor Air Inc.                48.92001   7063
+5       Frontier Airlines Inc.                45.13783    341
+6                    Envoy Air                44.91533   8031
+7       Hawaiian Airlines Inc.                44.84058     69
+8  AirTran Airways Corporation                40.82588   1654
+9              JetBlue Airways                39.79422  21445
+10        Delta Air Lines Inc.                37.40024  15241
+11      American Airlines Inc.                37.16926  10162
+12      Southwest Airlines Co.                34.85743   6558
+13              Virgin America                34.45483   2225
+14             US Airways Inc.                33.05068   4775
+15        Alaska Airlines Inc.                31.34071    226
+16       United Air Lines Inc.                29.92619  27261</code></pre>
+</div>
+</div>
+<p><strong>Comentarios de Pregunta 1:</strong> En una primera consulta se calculó el tiempo promedio de salida de los vuelos, considerando tanto anticipaciones como retrasos. El resultado muestra que Frontier Airlines Inc.&nbsp;registró el mayor retraso promedio, con 20.2 minutos en 2013. Sin embargo, al analizar únicamente los vuelos que efectivamente presentaron retraso, la situación cambia: SkyWest Airlines Inc.&nbsp;ocupa el primer lugar con un promedio de 58 minutos de retraso. En este escenario, Frontier Airlines Inc.&nbsp;desciende al quinto lugar, considerando el retraso de 341 vuelos. En contraste, SkyWest Airlines Inc.&nbsp;reportó retraso en 9 de sus 29 vuelos, con un mayor tiempo promedio en este subconjunto.</p>
+<p>NOTA IMPORTANTE: Continuaremos con los promedios considerando el total de los vuelos de ahora en adelante.</p>
+</section>
+<section id="pregunta-2.-qué-día-de-la-semana-tuvo-más-vuelos-retrasados-en-promedio" class="level1">
+<h1>Pregunta 2.# ¿Qué día de la semana tuvo más vuelos retrasados en promedio?</h1>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>query_P2 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT   </span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="st">    CASE strftime('%w', date(         printf('%04d-%02d-%02d', year, month, day)       ))     </span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="st">      WHEN '1' THEN 'Lunes'     </span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="st">      WHEN '2' THEN 'Martes'     </span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="st">      WHEN '3' THEN 'Miércoles'     </span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="st">      WHEN '4' THEN 'Jueves'     </span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="st">      WHEN '5' THEN 'Viernes'     </span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="st">      WHEN '6' THEN 'Sábado'     </span></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="st">      WHEN '0' THEN 'Domingo'   </span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a><span class="st">    END AS dia_semana,      </span></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="st">    AVG(dep_delay) AS retraso_promedio_salida,   </span></span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT(*) AS vuelos_retrasados_salida  </span></span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM vuelos WHERE dep_delay IS NOT NULL  </span></span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a><span class="st">  GROUP BY dia_semana </span></span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a><span class="st">  ORDER BY retraso_promedio_salida DESC; </span></span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>resultado_P2 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P2) </span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>resultado_P2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  dia_semana retraso_promedio_salida vuelos_retrasados_salida
+1     Jueves               16.148920                    48657
+2      Lunes               14.778937                    49470
+3    Viernes               14.696057                    48700
+4  Miércoles               11.803512                    48858
+5    Domingo               11.589532                    45643
+6     Martes               10.631683                    49270
+7     Sábado                7.650502                    37923</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>query_P2v2 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT   </span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="st">    CASE strftime('%w', date(         printf('%04d-%02d-%02d', year, month, day)       ))     </span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="st">    WHEN '1' THEN 'Lunes'     </span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="st">    WHEN '2' THEN 'Martes'     </span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="st">    WHEN '3' THEN 'Miércoles'     </span></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="st">    WHEN '4' THEN 'Jueves'     </span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="st">    WHEN '5' THEN 'Viernes'     </span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a><span class="st">    WHEN '6' THEN 'Sábado'     </span></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a><span class="st">    WHEN '0' THEN 'Domingo'   </span></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="st">  END AS dia_semana,      </span></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a><span class="st">  AVG(dep_delay) AS retraso_promedio_salida,   </span></span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a><span class="st">  COUNT(*) AS vuelos_retrasados_salida  </span></span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a><span class="st">FROM vuelos WHERE dep_delay IS NOT NULL   AND dep_delay &gt; 0  </span></span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a><span class="st">GROUP BY dia_semana </span></span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY retraso_promedio_salida DESC; </span></span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>resultado_P2v2 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P2v2) </span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>resultado_P2v2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  dia_semana retraso_promedio_salida vuelos_retrasados_salida
+1      Lunes                43.52053                    19845
+2     Jueves                43.13848                    21007
+3    Viernes                40.38651                    20719
+4  Miércoles                39.51796                    18208
+5    Domingo                37.50775                    17487
+6     Martes                37.42711                    17951
+7     Sábado                30.48392                    13215</code></pre>
+</div>
+</div>
+<p><strong>Comentarios de Pregunta 2:</strong> El día de la semana que presentó el mayor retraso promedio en la salida fue eljueves mientras que si consideramos solo los vuelos con retraso, fue los lunes.Ambos días fueron el top 2 en ambos casos, lo que sugiere que, en promedio, los vuelos programados para esos días experimentaron mayores demoras en comparación con el resto de la semana. Este patrón podría estar asociado a niveles de congestión, demanda de vuelos o condicionenes operativas.</p>
+</section>
+<section id="pregunta-3.-cuál-es-la-distribución-de-los-retrasos-en-la-salida-para-cada-aeropuerto" class="level1">
+<h1>Pregunta 3.# ¿Cuál es la distribución de los retrasos en la salida para cada aeropuerto?</h1>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>query_P3 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT origin,     </span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="st">    MIN(dep_delay)  AS min_delay,     </span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="st">    MAX(dep_delay)  AS max_delay,     </span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="st">    AVG(dep_delay)  AS avg_delay,     </span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT(*)        AS total_vuelos </span></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM vuelos </span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="st">  GROUP BY origin; </span></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="st">  ORDER BY avg_delay DESC; </span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="st">  "</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>resultado_P3 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P3) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Ignoring remaining part of query: ORDER BY avg_delay DESC; 
+  </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>resultado_P3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  origin min_delay max_delay avg_delay total_vuelos
+1    EWR       -25      1126  15.10795       120835
+2    JFK       -43      1301  12.11216       111279
+3    LGA       -33       911  10.34688       104662</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># solo tomando delays &gt; 0 </span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>query_P3v2 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT origin,     </span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="st">    MIN(dep_delay)  AS min_delay,     </span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="st">    MAX(dep_delay)  AS max_delay,     </span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="st">    AVG(dep_delay)  AS avg_delay,     </span></span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT(*)        AS total_vuelos </span></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM vuelos WHERE dep_delay&gt;0 </span></span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a><span class="st">  GROUP BY origin; </span></span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a><span class="st">  ORDER BY avg_delay DESC; </span></span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>resultado_P3v2 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P3v2) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Ignoring remaining part of query: ORDER BY avg_delay DESC; </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>resultado_P3v2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  origin min_delay max_delay avg_delay total_vuelos
+1    EWR         1      1126  38.98792        52711
+2    JFK         1      1301  38.04677        42031
+3    LGA         1       911  41.63096        33690</code></pre>
+</div>
+</div>
+<p><strong>Comentarios de Pregunta 3:</strong></p>
+<p>Se obtienen los mismas métricas que en la consulta de R, aún cuando en R agregamos el filtro de eliminar NA, lo que es diferente es el conteo total de vuelos.</p>
+<p>Como ya se comentó en el código de R, el aeropuerto con menor media de retraso de salida es LGA con 10.3 minutos, siendo el de mayor retraso EWR. Es más sencillo realizar esta revisión en R ya que es posible hacer gráficos a diferencia de SQL.</p>
+<p>Cuando se consideran sólo los vuelos con retraso, le media aumenta, como es esperado, de rangos entre 10 y 15 minutos a 38 a 42 minutos. El órden de tiempo de retraso promedio entre aeropuertos se mantiene en ambos casos, es decir EWR, JFK y LGA.</p>
+</section>
+<section id="pregunta-4.-qué-proporción-de-vuelos-se-retrasaron-más-de-30-minutos" class="level1">
+<h1>Pregunta 4.# ¿Qué proporción de vuelos se retrasaron más de 30 minutos?</h1>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>query_P4 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT      </span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT(CASE WHEN dep_delay &gt; 30 THEN 1 END)*100.0/ </span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT(*) AS proporcion </span></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM vuelos; </span></span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a><span class="st">"</span> </span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a><span class="co"># lo multiplico por 100.0 porque sino no aparecen los decimales.}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>resultado_P4 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P4) </span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>resultado_P4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  proporcion
+1    14.3392</code></pre>
+</div>
+</div>
+<p><strong>Comentarios de Pregunta 4:</strong> Se obtiene el mismo resultado que en R, donde el 14.3% de los vuelos, tienen retrasos en su salida.</p>
+</section>
+<section id="pregunta-5.-qué-destinos-tuvieron-los-mayores-retrasos-promedio-en-la-llegada" class="level1">
+<h1>Pregunta 5.# ¿Qué destinos tuvieron los mayores retrasos promedio en la llegada?</h1>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>query_P5 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT </span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="st">    name, </span></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="st">    dest, </span></span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="st">    avg(arr_delay) AS mean_retraso_llegada, </span></span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT(*) AS total_vuelos </span></span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM vuelos as A </span></span>
+<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a><span class="st">    LEFT JOIN aeropuertos AS B  </span></span>
+<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a><span class="st">    ON A.dest=B.faa </span></span>
+<span id="cb62-10"><a href="#cb62-10" aria-hidden="true" tabindex="-1"></a><span class="st">  GROUP BY dest ORDER </span></span>
+<span id="cb62-11"><a href="#cb62-11" aria-hidden="true" tabindex="-1"></a><span class="st">  BY mean_retraso_llegada DESC ; </span></span>
+<span id="cb62-12"><a href="#cb62-12" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>resultado_P5 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P5) </span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>resultado_P5</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                    name dest mean_retraso_llegada total_vuelos
+1                  Columbia Metropolitan  CAE          41.76415094          116
+2                             Tulsa Intl  TUL          33.65986395          315
+3                      Will Rogers World  OKC          30.61904762          346
+4                   Jackson Hole Airport  JAC          28.09523810           25
+5                          Mc Ghee Tyson  TYS          24.06920415          631
+6                 Dane Co Rgnl Truax Fld  MSN          20.19604317          572
+7                          Richmond Intl  RIC          20.11125320         2454
+8          Akron Canton Regional Airport  CAK          19.69833729          864
+9                        Des Moines Intl  DSM          19.00573614          569
+10                    Gerald R Ford Intl  GRR          18.18956044          765
+11                       Birmingham Intl  BHM          16.87732342          297
+12          Theodore Francis Green State  PVD          16.23463687          376
+13  Greenville-Spartanburg International  GSP          15.93544304          849
+14     Cincinnati Northern Kentucky Intl  CVG          15.36456376         3941
+15             Savannah Hilton Head Intl  SAV          15.12950601          804
+16           Manchester Regional Airport  MHT          14.78755365         1009
+17                           Eppley Afld  OMA          14.69889841          849
+18                                Yeager  CRW          14.67164179          138
+19                      Kansas City Intl  MCI          14.51405836         2008
+20                           Albany Intl  ALB          14.39712919          439
+21                 General Mitchell Intl  MKE          14.16722038         2802
+22                        Piedmont Triad  GSO          14.11260054         1606
+23                Washington Dulles Intl  IAD          13.86420212         5700
+24                Cherry Capital Airport  TVC          12.96842105          101
+25               James M Cox Dayton Intl  DAY          12.68048606         1525
+26      Louisville International Airport  SDF          12.66938406         1157
+27                   Chicago Midway Intl  MDW          12.36422360         4113
+28                       Sacramento Intl  SMF          12.10992908          284
+29                     Jacksonville Intl  JAX          11.84483416         2720
+30                        Nashville Intl  BNA          11.81245891         6333
+31                 Portland Intl Jetport  PWM          11.66040210         2352
+32                Greater Rochester Intl  ROC          11.56064461         2416
+33       Hartsfield Jackson Atlanta Intl  ATL          11.30011285        17215
+34                 Lambert St Louis Intl  STL          11.07846451         4339
+35                          Norfolk Intl  ORF          10.94909344         1536
+36             Baltimore Washington Intl  BWI          10.72673385         1781
+37                          Memphis Intl  MEM          10.64531435         1789
+38                    Port Columbus Intl  CMH          10.60132291         3524
+39                   Charleston Afb Intl  CHS          10.59296847         2884
+40                     Philadelphia Intl  PHL          10.12719014         1632
+41                   Raleigh Durham Intl  RDU          10.05238095         8163
+42                     Indianapolis Intl  IND           9.94043412         2077
+43             Charlottesville-Albemarle  CHO           9.50000000           52
+44                Cleveland Hopkins Intl  CLE           9.18161129         4573
+45         Ronald Reagan Washington Natl  DCA           9.06695204         9705
+46                       Burlington Intl  BTV           8.95099602         2589
+47                  Buffalo Niagara Intl  BUF           8.94595186         4681
+48                 Syracuse Hancock Intl  SYR           8.90392501         1761
+49                           Denver Intl  DEN           8.60650021         7266
+50                       Palm Beach Intl  PBI           8.56297210         6554
+51                                  &lt;NA&gt;  BQN           8.24549550          896
+52                              Bob Hope  BUR           8.17567568          371
+53        Fort Lauderdale Hollywood Intl  FLL           8.08212154        12055
+54                           Bangor Intl  BGR           8.02793296          375
+55            Asheville Regional Airport  AVL           8.00383142          275
+56                                  &lt;NA&gt;  PSE           7.87150838          365
+57                       Pittsburgh Intl  PIT           7.68099053         2875
+58                        Gallatin Field  BZN           7.60000000           36
+59                  NW Arkansas Regional  XNA           7.46572581         1036
+60                            Tampa Intl  TPA           7.40852503         7466
+61                Charlotte Douglas Intl  CLT           7.36031885        14064
+62              Minneapolis St Paul Intl  MSP           7.27016886         7185
+63                       William P Hobby  HOU           7.17618819         2115
+64                          Bradley Intl  BDL           7.04854369          443
+65                      San Antonio Intl  SAT           6.94537178          686
+66                       South Bend Rgnl  SBN           6.50000000           10
+67      Louis Armstrong New Orleans Intl  MSY           6.49017497         3799
+68                         Key West Intl  EYW           6.35294118           17
+69                         Eagle Co Rgnl  EGE           6.30434783          213
+70                 Austin Bergstrom Intl  AUS           6.01990875         2439
+71                    Chicago Ohare Intl  ORD           5.87661475        17283
+72                          Orlando Intl  MCO           5.45464309        14082
+73                Detroit Metro Wayne Co  DTW           5.42996346         9384
+74                         Portland Intl  PDX           5.14157973         1354
+75                         Nantucket Mem  ACK           4.85227273          265
+76                       Wilmington Intl  ILM           4.63551402          110
+77                     Myrtle Beach Intl  MYR           4.60344828           59
+78     Albuquerque International Sunport  ABQ           4.38188976          254
+79          George Bush Intercontinental  IAH           4.24079040         7198
+80         Norman Y Mineta San Jose Intl  SJC           3.44817073          329
+81                Southwest Florida Intl  RSW           3.23814963         3537
+82                        San Diego Intl  SAN           3.13916574         2737
+83               Sarasota Bradenton Intl  SRQ           3.08243131         1211
+84             Metropolitan Oakland Intl  OAK           3.07766990          312
+85    General Edward Lawrence Logan Intl  BOS           2.91439222        15508
+86                    San Francisco Intl  SFO           2.67289152        13331
+87                                  &lt;NA&gt;  SJU           2.52052659         5819
+88                          Yampa Valley  HDN           2.14285714           15
+89               Phoenix Sky Harbor Intl  PHX           2.09704733         4656
+90             Montrose Regional Airport  MTJ           1.78571429           15
+91                      Los Angeles Intl  LAX           0.54711094        16174
+92                Dallas Fort Worth Intl  DFW           0.32212685         8738
+93                            Miami Intl  MIA           0.29905978        11728
+94                        Mc Carran Intl  LAS           0.25772849         5997
+95                   Salt Lake City Intl  SLC           0.17625459         2467
+96                            Long Beach  LGB          -0.06202723          668
+97                 Martha\\\\'s Vineyard  MVY          -0.28571429          221
+98                   Seattle Tacoma Intl  SEA          -1.09909910         3923
+99                         Honolulu Intl  HNL          -1.36519258          707
+100           Ted Stevens Anchorage Intl  ANC          -2.50000000            8
+101                                 &lt;NA&gt;  STT          -3.83590734          522
+102            John Wayne Arpt Orange Co  SNA          -7.86822660          825
+103                    Palm Springs Intl  PSP         -12.72222222           19
+104                           Blue Grass  LEX         -22.00000000            1
+105                           La Guardia  LGA                   NA            1</code></pre>
+</div>
+</div>
+<p><strong>Comentarios de Pregunta 5:</strong></p>
+<p>Se obtiene el mismo resultado que en R, el Top 5 de vuelos con mayor retraso de retraso promedio son: <strong>Columbia Metropolitan, Tulsa International, Will Rogers World, Jackson Hole Airport y Mc Ghee Tyson</strong>.</p>
+</section>
+<section id="pregunta-6.-qué-aerolíneas-tuvieron-el-mayor-número-de-vuelos-desde-nyc" class="level1">
+<h1>Pregunta 6.# ¿Qué aerolíneas tuvieron el mayor número de vuelos desde NYC?</h1>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>query_P6 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT </span></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="st">    A.carrier, </span></span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="st">    B.name, </span></span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT(*) AS total_vuelos </span></span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM vuelos as A </span></span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a><span class="st">    LEFT JOIN aerolineas AS B  </span></span>
+<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a><span class="st">    ON A.carrier=B.carrier </span></span>
+<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a><span class="st">  GROUP BY a.carrier </span></span>
+<span id="cb65-10"><a href="#cb65-10" aria-hidden="true" tabindex="-1"></a><span class="st">  ORDER BY total_vuelos DESC ; </span></span>
+<span id="cb65-11"><a href="#cb65-11" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>resultado_P6 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P6) </span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>resultado_P6</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   carrier                        name total_vuelos
+1       UA       United Air Lines Inc.        58665
+2       B6             JetBlue Airways        54635
+3       EV    ExpressJet Airlines Inc.        54173
+4       DL        Delta Air Lines Inc.        48110
+5       AA      American Airlines Inc.        32729
+6       MQ                   Envoy Air        26397
+7       US             US Airways Inc.        20536
+8       9E           Endeavor Air Inc.        18460
+9       WN      Southwest Airlines Co.        12275
+10      VX              Virgin America         5162
+11      FL AirTran Airways Corporation         3260
+12      AS        Alaska Airlines Inc.          714
+13      F9      Frontier Airlines Inc.          685
+14      YV          Mesa Airlines Inc.          601
+15      HA      Hawaiian Airlines Inc.          342
+16      OO       SkyWest Airlines Inc.           32</code></pre>
+</div>
+</div>
+<p><strong>Comentarios de Pregunta 6:</strong></p>
+<p>Se obtuvieron los mismos resultados entre al consulta en R y SQL, con el Top 5 de aerolíneas con mayor número de vuelos a:</p>
+<p><strong>United Airlines (UA):</strong> 58,665 vuelos, <strong>JetBlue Airways (B6):</strong> 54,635 vuelos, <strong>ExpressJet Airlines (EV):</strong> 54,173, <strong>Delta Air Lines (DL):</strong> 48,110 vuelos y <strong>American Airlines (AA):</strong> 32,729 vuelos, ocupando el quinto lugar.</p>
+</section>
+<section id="pregunta-7.-cómo-varía-el-retraso-de-los-vuelos-según-el-fabricante-de-la-aeronave" class="level1">
+<h1>Pregunta 7.# ¿Cómo varía el retraso de los vuelos según el fabricante de la aeronave?</h1>
+<p>Nota: Se tomará en cuenta la columna arr_delay (llegada) porque esta refleja el retraso final del vuelo. (como en el ejercicio en R)</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>query_P7 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT </span></span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="st">    manufacturer, </span></span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="st">    AVG(arr_delay) AS mean_retraso, </span></span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT(*) AS total_vuelos </span></span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM vuelos AS A </span></span>
+<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a><span class="st">    LEFT JOIN aviones AS B </span></span>
+<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a><span class="st">    ON A.tailnum = B.tailnum </span></span>
+<span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a><span class="st">  WHERE manufacturer IS NOT NULL AND arr_delay IS NOT NULL </span></span>
+<span id="cb68-10"><a href="#cb68-10" aria-hidden="true" tabindex="-1"></a><span class="st">  GROUP BY manufacturer </span></span>
+<span id="cb68-11"><a href="#cb68-11" aria-hidden="true" tabindex="-1"></a><span class="st">  ORDER BY mean_retraso DESC ; </span></span>
+<span id="cb68-12"><a href="#cb68-12" aria-hidden="true" tabindex="-1"></a><span class="st">  "</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>resultado_P7 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P7) </span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>resultado_P7</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                    manufacturer mean_retraso total_vuelos
+1                     AGUSTA SPA  30.64516129           31
+2                       CANADAIR  16.66756032         1492
+3                        EMBRAER  13.91967574        63530
+4                 FRIEDEMANN JON  12.94642857           56
+5             AVIAT AIRCRAFT INC  12.29411765           17
+6                  BARKER JACK L  11.11600000          250
+7                LAMBERT RICHARD   9.07547170           53
+8                         CESSNA   8.62279294          623
+9         ROBINSON HELICOPTER CO   8.18505338          281
+10            CIRRUS DESIGN CORP   8.16608997          289
+11                  CANADAIR LTD   8.13978495           93
+12                BOMBARDIER INC   8.11928545        27430
+13                          BELL   8.04761905           63
+14          GULFSTREAM AEROSPACE   7.17299578          474
+15 MCDONNELL DOUGLAS CORPORATION   6.65838011         1247
+16            HURLEY JAMES LARRY   6.56250000           16
+17                        AIRBUS   6.25947963        46890
+18 MCDONNELL DOUGLAS AIRCRAFT CO   5.66052036         8840
+19                         BEECH   4.89130435           46
+20              AIRBUS INDUSTRIE   4.26482457        40642
+21                        BOEING   3.56637459        82283
+22                       DOUGLAS   3.50000000           22
+23                   PAIR MIKE E   2.56000000           25
+24                    MARZ BARRY   0.87500000           40
+25                   LEARJET INC   0.05263158           19
+26             MCDONNELL DOUGLAS  -0.47382131         3839
+27                      SIKORSKY  -1.34615385           26
+28                         PIPER  -2.44155844          154
+29                  STEWART MACO  -2.60377358           53
+30                   JOHN G HESS  -3.33333333            3
+31                   DEHAVILLAND  -4.29508197           61
+32               LEBLANC GLENN T  -5.05555556           36
+33                  KILDALL GARY  -5.96078431           51
+34        AVIONS MARCEL DASSAULT -10.25000000            4
+35         AMERICAN AIRCRAFT INC -13.36842105           38</code></pre>
+</div>
+</div>
+<p>Si filtramos fabricantes con mas de 50 vuelos nos queda:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>query_P7v2 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT </span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="st">    manufacturer, </span></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="st">    AVG(arr_delay) AS mean_retraso, </span></span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT(*) AS total_vuelos </span></span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM vuelos AS A </span></span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="st">    LEFT JOIN aviones AS B </span></span>
+<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a><span class="st">    ON A.tailnum = B.tailnum </span></span>
+<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a><span class="st">  WHERE manufacturer IS NOT NULL AND arr_delay IS NOT NULL </span></span>
+<span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a><span class="st">  GROUP BY manufacturer </span></span>
+<span id="cb71-11"><a href="#cb71-11" aria-hidden="true" tabindex="-1"></a><span class="st">  HAVING total_vuelos&gt;50 </span></span>
+<span id="cb71-12"><a href="#cb71-12" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY mean_retraso DESC ; </span></span>
+<span id="cb71-13"><a href="#cb71-13" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>resultado_P7v2 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P7v2) </span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>resultado_P7v2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                    manufacturer mean_retraso total_vuelos
+1                       CANADAIR   16.6675603         1492
+2                        EMBRAER   13.9196757        63530
+3                 FRIEDEMANN JON   12.9464286           56
+4                  BARKER JACK L   11.1160000          250
+5                LAMBERT RICHARD    9.0754717           53
+6                         CESSNA    8.6227929          623
+7         ROBINSON HELICOPTER CO    8.1850534          281
+8             CIRRUS DESIGN CORP    8.1660900          289
+9                   CANADAIR LTD    8.1397849           93
+10                BOMBARDIER INC    8.1192855        27430
+11                          BELL    8.0476190           63
+12          GULFSTREAM AEROSPACE    7.1729958          474
+13 MCDONNELL DOUGLAS CORPORATION    6.6583801         1247
+14                        AIRBUS    6.2594796        46890
+15 MCDONNELL DOUGLAS AIRCRAFT CO    5.6605204         8840
+16              AIRBUS INDUSTRIE    4.2648246        40642
+17                        BOEING    3.5663746        82283
+18             MCDONNELL DOUGLAS   -0.4738213         3839
+19                         PIPER   -2.4415584          154
+20                  STEWART MACO   -2.6037736           53
+21                   DEHAVILLAND   -4.2950820           61
+22                  KILDALL GARY   -5.9607843           51</code></pre>
+</div>
+</div>
+<p><strong>Comentarios de Pregunta 7:</strong></p>
+<p>Se obtuvieron los mismos resultados con el código en R y SQL. En estas consultas se consideraron varios filtros: quitando los que tienen manufacturer=na, arr_delay=na y total_vuelos&gt;50.</p>
+<ul>
+<li><p>manufacturer=na y arr_delay=na, se hicieron para eliminar las posibiliaddes de error en los cálculos omitiendo manufacturers que por tener algunos registros con arr_delay=na, que el promedio quedara como na en vez de el promedio de los vuelos con los que se contaba con información. Contamos con una consulta sin eliminr los manufacturers=na para contabilizar los registros a los que hace falta catalogar su tailnum en la base de aviones: Hay 52,606 vuelos que no tienen manufacturer, de los cuales 4,277 si tienen retraso registrado. (52,606-48,329 arr_delay=na)</p></li>
+<li><p>total_vuelos&gt;50, ya que al contar con pocos vuelos, su promedio podría posicionar a los fabricantes con un alto tiempo de retraso como indicativo, a pesar de no serlo necesariamente.</p></li>
+</ul>
+</section>
+<section id="pregunta-8.-los-aviones-más-antiguos-tienen-más-retrasos" class="level1">
+<h1>Pregunta 8.# ¿Los aviones más antiguos tienen más retrasos?</h1>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ORDER BY anio_fabricacion, cambiamos esta instrucción por ORDER BY mean_retraso DESC para verificar si el año de fabricación se estaba relacionado con el retraso promedio.   </span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>query_P8 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT    </span></span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="st">    B.year AS anio_fabricacion,    </span></span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a><span class="st">    AVG(A.arr_delay) AS mean_retraso,    </span></span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT(*) AS vuelos </span></span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM vuelos AS A </span></span>
+<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a><span class="st">    LEFT JOIN aviones AS B </span></span>
+<span id="cb74-9"><a href="#cb74-9" aria-hidden="true" tabindex="-1"></a><span class="st">    ON A.tailnum = B.tailnum </span></span>
+<span id="cb74-10"><a href="#cb74-10" aria-hidden="true" tabindex="-1"></a><span class="st">  WHERE B.year IS NOT NULL AND arr_delay IS NOT NULL </span></span>
+<span id="cb74-11"><a href="#cb74-11" aria-hidden="true" tabindex="-1"></a><span class="st">  GROUP BY anio_fabricacion </span></span>
+<span id="cb74-12"><a href="#cb74-12" aria-hidden="true" tabindex="-1"></a><span class="st">  ORDER BY mean_retraso DESC  ; </span></span>
+<span id="cb74-13"><a href="#cb74-13" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>resultado_P8 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P8) </span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>resultado_P8</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   anio_fabricacion mean_retraso vuelos
+1              1983   13.9740260    231
+2              2004   10.2434361  15273
+3              2002    9.9403979  22969
+4              2006    9.9000615  12998
+5              2005    9.7985637  14064
+6              2003    9.6452432  14579
+7              1974    8.1397849     93
+8              2001    7.9293060  26254
+9              2007    7.5404174  15142
+10             2000    7.2596237  21951
+11             1999    7.1171465  19036
+12             1979    7.0158730     63
+13             1998    6.7098167  16910
+14             1984    6.1769912    113
+15             1993    5.7201201   3330
+16             2011    5.6962383   6008
+17             1990    5.6948900   5362
+18             1972    5.6666667     24
+19             2008    5.5729513  17731
+20             1989    5.4203655   3064
+21             2010    5.1752851   3771
+22             1977    5.1200000    175
+23             2009    4.9207243   6572
+24             1976    4.7953668    518
+25             1975    4.7191011     89
+26             1992    4.6968427   7633
+27             1995    4.3067933   1369
+28             1991    4.1779504   5923
+29             1959    4.0892857    112
+30             1967    4.0454545     22
+31             2013    4.0065062   4611
+32             1996    3.8079285   1791
+33             1956    3.5000000     22
+34             1994    3.0137291   2695
+35             1988    2.9814619   3776
+36             2012    2.8508894   7196
+37             1978    1.7916667     24
+38             1997    1.5247257   5925
+39             1963    1.4200000     50
+40             1987    0.9559293   3449
+41             1985    0.1819106    984
+42             1986   -0.2829021   1778
+43             1980   -0.7641509    106
+44             1968   -1.6585366     41
+45             1973   -2.2272727     22
+46             1965  -16.2500000      4</code></pre>
+</div>
+</div>
+<p><strong>Comentarios de Pregunta 8:</strong></p>
+<p>Optamos por hacer una consulta con conteos y promedio de retraso por año de fabricación, en SQL debido a que SQLite no cuenta con una función nativa para el cálculo de correlaciones, (si se podría calcular pero de manera manual y eso lo desarrollamo sen R), por lo que lo dejamos de manera intuituvo con la relación entre sus años de fabricación y el promedio de tiempo de retraso en las llegadas. En la pregunta 16 si desarrollamos la fórmula explícita para contestar la pregunta de correlaciones.</p>
+</section>
+<section id="pregunta-9.-qué-modelos-de-aviones-se-utilizan-con-mayor-frecuencia-en-vuelos-desde-nyc" class="level1">
+<h1>Pregunta 9.# ¿Qué modelos de aviones se utilizan con mayor frecuencia en vuelos desde NYC?</h1>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>query_P9 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT </span></span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="st">    B.model, </span></span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT(*) AS num_vuelos </span></span>
+<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM vuelos AS A </span></span>
+<span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a><span class="st">    LEFT JOIN aviones AS B </span></span>
+<span id="cb77-7"><a href="#cb77-7" aria-hidden="true" tabindex="-1"></a><span class="st">    ON A.tailnum = B.tailnum </span></span>
+<span id="cb77-8"><a href="#cb77-8" aria-hidden="true" tabindex="-1"></a><span class="st">  WHERE B.model IS NOT NULL </span></span>
+<span id="cb77-9"><a href="#cb77-9" aria-hidden="true" tabindex="-1"></a><span class="st">  GROUP BY B.model </span></span>
+<span id="cb77-10"><a href="#cb77-10" aria-hidden="true" tabindex="-1"></a><span class="st">  ORDER BY num_vuelos DESC </span></span>
+<span id="cb77-11"><a href="#cb77-11" aria-hidden="true" tabindex="-1"></a><span class="st">  LIMIT 10  ; </span></span>
+<span id="cb77-12"><a href="#cb77-12" aria-hidden="true" tabindex="-1"></a><span class="st">"</span> </span>
+<span id="cb77-13"><a href="#cb77-13" aria-hidden="true" tabindex="-1"></a><span class="co"># top10</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>resultado_P9 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P9) </span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>resultado_P9</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             model num_vuelos
+1         A320-232      45831
+2        EMB-145LR      28027
+3  ERJ 190-100 IGW      23716
+4        EMB-145XR      14051
+5          737-824      13809
+6      CL-600-2D24      11807
+7          737-7H4      10389
+8            MD-88      10191
+9         A319-114       9713
+10     CL-600-2B19       9588</code></pre>
+</div>
+</div>
+<p><strong>Comentarios de Pregunta 9:</strong></p>
+<p>Se obtuvieron los mismos resultados en la consulta con R y SQL.</p>
+</section>
+<section id="pregunta-10.-cuál-es-la-distancia-promedio-de-vuelo-por-aerolínea" class="level1">
+<h1>Pregunta 10.# ¿Cuál es la distancia promedio de vuelo por aerolínea?</h1>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>query_P10 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT    </span></span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a><span class="st">    B.name,    </span></span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a><span class="st">    CAST(ROUND(AVG(A.distance),0) AS INT) AS mean_distancia,   </span></span>
+<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT(*) AS total_vuelos </span></span>
+<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM vuelos AS A </span></span>
+<span id="cb80-7"><a href="#cb80-7" aria-hidden="true" tabindex="-1"></a><span class="st">    LEFT JOIN aerolineas AS B </span></span>
+<span id="cb80-8"><a href="#cb80-8" aria-hidden="true" tabindex="-1"></a><span class="st">    ON A.carrier = B.carrier </span></span>
+<span id="cb80-9"><a href="#cb80-9" aria-hidden="true" tabindex="-1"></a><span class="st">  GROUP BY B.carrier </span></span>
+<span id="cb80-10"><a href="#cb80-10" aria-hidden="true" tabindex="-1"></a><span class="st">  ORDER BY mean_distancia DESC </span></span>
+<span id="cb80-11"><a href="#cb80-11" aria-hidden="true" tabindex="-1"></a><span class="st">LIMIT 5 ; </span></span>
+<span id="cb80-12"><a href="#cb80-12" aria-hidden="true" tabindex="-1"></a><span class="st">"</span> </span>
+<span id="cb80-13"><a href="#cb80-13" aria-hidden="true" tabindex="-1"></a><span class="co"># TOP5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>resultado_P10 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P10) </span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>resultado_P10</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                    name mean_distancia total_vuelos
+1 Hawaiian Airlines Inc.           4983          342
+2         Virgin America           2499         5162
+3   Alaska Airlines Inc.           2402          714
+4 Frontier Airlines Inc.           1620          685
+5  United Air Lines Inc.           1529        58665</code></pre>
+</div>
+</div>
+<p><strong>Comentarios de Pregunta 10:</strong></p>
+<p>Se obtuvieron los mismos resultados en la consulta con R y SQL. En este caso, calculamos mediante <code>AVG()</code>, se redondeó con ROUND() y para fines de presentación se utilizó <code>CAST()</code> que trunca el valor. Finalmente se acotó la consulta al TOP 5.</p>
+</section>
+<section id="pregunta-11.-qué-aeropuerto-de-nyc-tuvo-el-mayor-número-de-retrasos-en-la-salida" class="level1">
+<h1>Pregunta 11.# ¿Qué aeropuerto de NYC tuvo el mayor número de retrasos en la salida?</h1>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>query_P11 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT </span></span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a><span class="st">    origin, </span></span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT(*) AS total_retrasos </span></span>
+<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM vuelos  </span></span>
+<span id="cb83-6"><a href="#cb83-6" aria-hidden="true" tabindex="-1"></a><span class="st">  WHERE origin IN ('JFK','LGA','EWR') AND dep_delay&gt;0 </span></span>
+<span id="cb83-7"><a href="#cb83-7" aria-hidden="true" tabindex="-1"></a><span class="st">  GROUP BY origin </span></span>
+<span id="cb83-8"><a href="#cb83-8" aria-hidden="true" tabindex="-1"></a><span class="st">  ORDER BY total_retrasos DESC ; </span></span>
+<span id="cb83-9"><a href="#cb83-9" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>resultado_P11 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P11) </span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>resultado_P11</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  origin total_retrasos
+1    EWR          52711
+2    JFK          42031
+3    LGA          33690</code></pre>
+</div>
+</div>
+<p><strong>Comentarios de Pregunta 11:</strong></p>
+<p>Filtramos por los casos en los que dep_delay &gt; 0, para contar qué aeropuerto de NY tuvo más retrasos de salida. En números netos esta respuesta es correcta; sin embargo, en un análisis más profundo se podría incluir el tamaño de operación de cada uno de los aeropuertos para poder conocer la tasa de los vuelos con retraso.</p>
+</section>
+<section id="pregunta-12.-qué-aeropuerto-tuvo-el-menor-tiempo-promedio-de-taxi-out" class="level1">
+<h1>Pregunta 12.# ¿Qué aeropuerto tuvo el menor tiempo promedio de taxi-out?</h1>
+<p>Taxi-out se entiende como el tiempo en el que estuvo “estacionado” desde el abordaje de los pasajeros hasta que se colocó en la pista para el despegue. Esto es, el tiempo en el piso para que estés en la pista de vuelo. Considera desde que se mueve desde la puerta de embarque (gate) hasta la pista de despegue. Incluye el rodaje, paradas y esperas antes de alzar el vuelo.</p>
+<p>Para esto, considérese las variables dep_delay y arr_delay<br>
+taxi_aprox = dep_delay - arr_delay</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>query_P12 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT</span></span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a><span class="st">    origin,</span></span>
+<span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a><span class="st">    AVG(dep_delay - arr_delay) AS taxi_out_promedio,</span></span>
+<span id="cb86-5"><a href="#cb86-5" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT(*) AS vuelos</span></span>
+<span id="cb86-6"><a href="#cb86-6" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM vuelos</span></span>
+<span id="cb86-7"><a href="#cb86-7" aria-hidden="true" tabindex="-1"></a><span class="st">  WHERE dep_delay IS NOT NULL </span></span>
+<span id="cb86-8"><a href="#cb86-8" aria-hidden="true" tabindex="-1"></a><span class="st">    AND arr_delay IS NOT NULL </span></span>
+<span id="cb86-9"><a href="#cb86-9" aria-hidden="true" tabindex="-1"></a><span class="st">  GROUP BY origin</span></span>
+<span id="cb86-10"><a href="#cb86-10" aria-hidden="true" tabindex="-1"></a><span class="st">  ORDER BY taxi_out_promedio ASC;</span></span>
+<span id="cb86-11"><a href="#cb86-11" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb86-12"><a href="#cb86-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-13"><a href="#cb86-13" aria-hidden="true" tabindex="-1"></a>resultado_p12 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P12)</span>
+<span id="cb86-14"><a href="#cb86-14" aria-hidden="true" tabindex="-1"></a>resultado_p12</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  origin taxi_out_promedio vuelos
+1    LGA          4.503095 101140
+2    EWR          5.902055 117127
+3    JFK          6.472126 109079</code></pre>
+</div>
+</div>
+<p><strong>Comentarios de Pregunta 12:</strong></p>
+<p>Coincidimos con la formulación realizada en el primer ejercicio en R, así como con los resultados.</p>
+</section>
+<section id="pregunta-13.-qué-porcentaje-de-vuelos-que-salen-de-cada-aeropuerto-de-nyc-fueron-puntuales" class="level1">
+<h1>Pregunta 13.# ¿Qué porcentaje de vuelos que salen de cada aeropuerto de NYC fueron puntuales?</h1>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>query_P13 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT origin, </span></span>
+<span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT(CASE WHEN dep_delay &lt;= 0 THEN 1 END)*100.0/ </span></span>
+<span id="cb88-4"><a href="#cb88-4" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT(*) AS pct_puntuales FROM vuelos  </span></span>
+<span id="cb88-5"><a href="#cb88-5" aria-hidden="true" tabindex="-1"></a><span class="st">  WHERE dep_delay IS NOT NULL </span></span>
+<span id="cb88-6"><a href="#cb88-6" aria-hidden="true" tabindex="-1"></a><span class="st">  GROUP BY origin </span></span>
+<span id="cb88-7"><a href="#cb88-7" aria-hidden="true" tabindex="-1"></a><span class="st">  ORDER BY pct_puntuales DESC ; </span></span>
+<span id="cb88-8"><a href="#cb88-8" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb88-9"><a href="#cb88-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-10"><a href="#cb88-10" aria-hidden="true" tabindex="-1"></a>resultado_P13 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P13) </span>
+<span id="cb88-11"><a href="#cb88-11" aria-hidden="true" tabindex="-1"></a>resultado_P13</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  origin pct_puntuales
+1    LGA      66.81082
+2    JFK      61.58606
+3    EWR      55.17620</code></pre>
+</div>
+</div>
+<p>Consulta más manual…</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>query_p13_2 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT </span></span>
+<span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a><span class="st">    origin, </span></span>
+<span id="cb90-4"><a href="#cb90-4" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT(</span></span>
+<span id="cb90-5"><a href="#cb90-5" aria-hidden="true" tabindex="-1"></a><span class="st">    ) AS total_vuelos, </span></span>
+<span id="cb90-6"><a href="#cb90-6" aria-hidden="true" tabindex="-1"></a><span class="st">    SUM( </span></span>
+<span id="cb90-7"><a href="#cb90-7" aria-hidden="true" tabindex="-1"></a><span class="st">      CASE </span></span>
+<span id="cb90-8"><a href="#cb90-8" aria-hidden="true" tabindex="-1"></a><span class="st">          WHEN dep_delay &lt;= 0 THEN 1 </span></span>
+<span id="cb90-9"><a href="#cb90-9" aria-hidden="true" tabindex="-1"></a><span class="st">          ELSE 0 </span></span>
+<span id="cb90-10"><a href="#cb90-10" aria-hidden="true" tabindex="-1"></a><span class="st">      END </span></span>
+<span id="cb90-11"><a href="#cb90-11" aria-hidden="true" tabindex="-1"></a><span class="st">    ) AS vuelos_puntuales, </span></span>
+<span id="cb90-12"><a href="#cb90-12" aria-hidden="true" tabindex="-1"></a><span class="st">    ROUND( </span></span>
+<span id="cb90-13"><a href="#cb90-13" aria-hidden="true" tabindex="-1"></a><span class="st">    100.0 * SUM( </span></span>
+<span id="cb90-14"><a href="#cb90-14" aria-hidden="true" tabindex="-1"></a><span class="st">      CASE </span></span>
+<span id="cb90-15"><a href="#cb90-15" aria-hidden="true" tabindex="-1"></a><span class="st">        WHEN dep_delay &lt;= 0 THEN 1 </span></span>
+<span id="cb90-16"><a href="#cb90-16" aria-hidden="true" tabindex="-1"></a><span class="st">        ELSE 0 </span></span>
+<span id="cb90-17"><a href="#cb90-17" aria-hidden="true" tabindex="-1"></a><span class="st">      END </span></span>
+<span id="cb90-18"><a href="#cb90-18" aria-hidden="true" tabindex="-1"></a><span class="st">    ) / COUNT(*),</span></span>
+<span id="cb90-19"><a href="#cb90-19" aria-hidden="true" tabindex="-1"></a><span class="st">    2 </span></span>
+<span id="cb90-20"><a href="#cb90-20" aria-hidden="true" tabindex="-1"></a><span class="st">    ) AS porcentaje_puntuales </span></span>
+<span id="cb90-21"><a href="#cb90-21" aria-hidden="true" tabindex="-1"></a><span class="st">FROM vuelos </span></span>
+<span id="cb90-22"><a href="#cb90-22" aria-hidden="true" tabindex="-1"></a><span class="st">WHERE dep_delay IS NOT NULL </span></span>
+<span id="cb90-23"><a href="#cb90-23" aria-hidden="true" tabindex="-1"></a><span class="st">GROUP BY origin </span></span>
+<span id="cb90-24"><a href="#cb90-24" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY porcentaje_puntuales DESC; </span></span>
+<span id="cb90-25"><a href="#cb90-25" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb90-26"><a href="#cb90-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-27"><a href="#cb90-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-28"><a href="#cb90-28" aria-hidden="true" tabindex="-1"></a>resultado_p13_2 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_p13_2) </span>
+<span id="cb90-29"><a href="#cb90-29" aria-hidden="true" tabindex="-1"></a>resultado_p13_2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  origin total_vuelos vuelos_puntuales porcentaje_puntuales
+1    LGA       101509            67819                66.81
+2    JFK       109416            67385                61.59
+3    EWR       117596            64885                55.18</code></pre>
+</div>
+</div>
+<p><strong>Comentarios de Pregunta 13:</strong></p>
+<p>Coincide entre las dos consultas en SQL y la de R.</p>
+</section>
+<section id="pregunta-14.-qué-aeropuertos-de-destino-tienen-el-mayor-retraso-promedio-en-la-llegada-para-vuelos-desde-nyc" class="level1">
+<h1>Pregunta 14.# ¿Qué aeropuertos de destino tienen el mayor retraso promedio en la llegada para vuelos desde NYC?</h1>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>query_P14 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT </span></span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="st">    A.dest, </span></span>
+<span id="cb92-4"><a href="#cb92-4" aria-hidden="true" tabindex="-1"></a><span class="st">    B.name, </span></span>
+<span id="cb92-5"><a href="#cb92-5" aria-hidden="true" tabindex="-1"></a><span class="st">    AVG(A.arr_delay) AS mean_retraso, </span></span>
+<span id="cb92-6"><a href="#cb92-6" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT(*) AS total_vuelos </span></span>
+<span id="cb92-7"><a href="#cb92-7" aria-hidden="true" tabindex="-1"></a><span class="st">      FROM vuelos AS A </span></span>
+<span id="cb92-8"><a href="#cb92-8" aria-hidden="true" tabindex="-1"></a><span class="st">        LEFT JOIN aeropuertos AS B </span></span>
+<span id="cb92-9"><a href="#cb92-9" aria-hidden="true" tabindex="-1"></a><span class="st">        ON A.dest = B.faa </span></span>
+<span id="cb92-10"><a href="#cb92-10" aria-hidden="true" tabindex="-1"></a><span class="st">  WHERE arr_delay IS NOT NULL </span></span>
+<span id="cb92-11"><a href="#cb92-11" aria-hidden="true" tabindex="-1"></a><span class="st">  GROUP BY dest ORDER </span></span>
+<span id="cb92-12"><a href="#cb92-12" aria-hidden="true" tabindex="-1"></a><span class="st">  BY mean_retraso DESC ; </span></span>
+<span id="cb92-13"><a href="#cb92-13" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb92-14"><a href="#cb92-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb92-15"><a href="#cb92-15" aria-hidden="true" tabindex="-1"></a>resultado_P14 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P14) </span>
+<span id="cb92-16"><a href="#cb92-16" aria-hidden="true" tabindex="-1"></a>resultado_P14</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    dest                                 name mean_retraso total_vuelos
+1    CAE                Columbia Metropolitan  41.76415094          106
+2    TUL                           Tulsa Intl  33.65986395          294
+3    OKC                    Will Rogers World  30.61904762          315
+4    JAC                 Jackson Hole Airport  28.09523810           21
+5    TYS                        Mc Ghee Tyson  24.06920415          578
+6    MSN               Dane Co Rgnl Truax Fld  20.19604317          556
+7    RIC                        Richmond Intl  20.11125320         2346
+8    CAK        Akron Canton Regional Airport  19.69833729          842
+9    DSM                      Des Moines Intl  19.00573614          523
+10   GRR                   Gerald R Ford Intl  18.18956044          728
+11   BHM                      Birmingham Intl  16.87732342          269
+12   PVD         Theodore Francis Green State  16.23463687          358
+13   GSP Greenville-Spartanburg International  15.93544304          790
+14   CVG    Cincinnati Northern Kentucky Intl  15.36456376         3725
+15   SAV            Savannah Hilton Head Intl  15.12950601          749
+16   MHT          Manchester Regional Airport  14.78755365          932
+17   OMA                          Eppley Afld  14.69889841          817
+18   CRW                               Yeager  14.67164179          134
+19   MCI                     Kansas City Intl  14.51405836         1885
+20   ALB                          Albany Intl  14.39712919          418
+21   MKE                General Mitchell Intl  14.16722038         2709
+22   GSO                       Piedmont Triad  14.11260054         1492
+23   IAD               Washington Dulles Intl  13.86420212         5383
+24   TVC               Cherry Capital Airport  12.96842105           95
+25   DAY              James M Cox Dayton Intl  12.68048606         1399
+26   SDF     Louisville International Airport  12.66938406         1104
+27   MDW                  Chicago Midway Intl  12.36422360         4025
+28   SMF                      Sacramento Intl  12.10992908          282
+29   JAX                    Jacksonville Intl  11.84483416         2623
+30   BNA                       Nashville Intl  11.81245891         6084
+31   PWM                Portland Intl Jetport  11.66040210         2288
+32   ROC               Greater Rochester Intl  11.56064461         2358
+33   ATL      Hartsfield Jackson Atlanta Intl  11.30011285        16837
+34   STL                Lambert St Louis Intl  11.07846451         4142
+35   ORF                         Norfolk Intl  10.94909344         1434
+36   BWI            Baltimore Washington Intl  10.72673385         1687
+37   MEM                         Memphis Intl  10.64531435         1686
+38   CMH                   Port Columbus Intl  10.60132291         3326
+39   CHS                  Charleston Afb Intl  10.59296847         2759
+40   PHL                    Philadelphia Intl  10.12719014         1541
+41   RDU                  Raleigh Durham Intl  10.05238095         7770
+42   IND                    Indianapolis Intl   9.94043412         1981
+43   CHO            Charlottesville-Albemarle   9.50000000           46
+44   CLE               Cleveland Hopkins Intl   9.18161129         4394
+45   DCA        Ronald Reagan Washington Natl   9.06695204         9111
+46   BTV                      Burlington Intl   8.95099602         2510
+47   BUF                 Buffalo Niagara Intl   8.94595186         4570
+48   SYR                Syracuse Hancock Intl   8.90392501         1707
+49   DEN                          Denver Intl   8.60650021         7169
+50   PBI                      Palm Beach Intl   8.56297210         6487
+51   BQN                                 &lt;NA&gt;   8.24549550          888
+52   BUR                             Bob Hope   8.17567568          370
+53   FLL       Fort Lauderdale Hollywood Intl   8.08212154        11897
+54   BGR                          Bangor Intl   8.02793296          358
+55   AVL           Asheville Regional Airport   8.00383142          261
+56   PSE                                 &lt;NA&gt;   7.87150838          358
+57   PIT                      Pittsburgh Intl   7.68099053         2746
+58   BZN                       Gallatin Field   7.60000000           35
+59   XNA                 NW Arkansas Regional   7.46572581          992
+60   TPA                           Tampa Intl   7.40852503         7390
+61   CLT               Charlotte Douglas Intl   7.36031885        13674
+62   MSP             Minneapolis St Paul Intl   7.27016886         6929
+63   HOU                      William P Hobby   7.17618819         2083
+64   BDL                         Bradley Intl   7.04854369          412
+65   SAT                     San Antonio Intl   6.94537178          659
+66   SBN                      South Bend Rgnl   6.50000000           10
+67   MSY     Louis Armstrong New Orleans Intl   6.49017497         3715
+68   EYW                        Key West Intl   6.35294118           17
+69   EGE                        Eagle Co Rgnl   6.30434783          207
+70   AUS                Austin Bergstrom Intl   6.01990875         2411
+71   ORD                   Chicago Ohare Intl   5.87661475        16566
+72   MCO                         Orlando Intl   5.45464309        13967
+73   DTW               Detroit Metro Wayne Co   5.42996346         9031
+74   PDX                        Portland Intl   5.14157973         1342
+75   ACK                        Nantucket Mem   4.85227273          264
+76   ILM                      Wilmington Intl   4.63551402          107
+77   MYR                    Myrtle Beach Intl   4.60344828           58
+78   ABQ    Albuquerque International Sunport   4.38188976          254
+79   IAH         George Bush Intercontinental   4.24079040         7085
+80   SJC        Norman Y Mineta San Jose Intl   3.44817073          328
+81   RSW               Southwest Florida Intl   3.23814963         3502
+82   SAN                       San Diego Intl   3.13916574         2709
+83   SRQ              Sarasota Bradenton Intl   3.08243131         1201
+84   OAK            Metropolitan Oakland Intl   3.07766990          309
+85   BOS   General Edward Lawrence Logan Intl   2.91439222        15022
+86   SFO                   San Francisco Intl   2.67289152        13173
+87   SJU                                 &lt;NA&gt;   2.52052659         5773
+88   HDN                         Yampa Valley   2.14285714           14
+89   PHX              Phoenix Sky Harbor Intl   2.09704733         4606
+90   MTJ            Montrose Regional Airport   1.78571429           14
+91   LAX                     Los Angeles Intl   0.54711094        16026
+92   DFW               Dallas Fort Worth Intl   0.32212685         8388
+93   MIA                           Miami Intl   0.29905978        11593
+94   LAS                       Mc Carran Intl   0.25772849         5952
+95   SLC                  Salt Lake City Intl   0.17625459         2451
+96   LGB                           Long Beach  -0.06202723          661
+97   MVY                Martha\\\\'s Vineyard  -0.28571429          210
+98   SEA                  Seattle Tacoma Intl  -1.09909910         3885
+99   HNL                        Honolulu Intl  -1.36519258          701
+100  ANC           Ted Stevens Anchorage Intl  -2.50000000            8
+101  STT                                 &lt;NA&gt;  -3.83590734          518
+102  SNA            John Wayne Arpt Orange Co  -7.86822660          812
+103  PSP                    Palm Springs Intl -12.72222222           18
+104  LEX                           Blue Grass -22.00000000            1</code></pre>
+</div>
+</div>
+<p><strong>Comentarios de Pregunta 14:</strong></p>
+<p>Coincidencia en los resultados de la consulta</p>
+</section>
+<section id="pregunta-15.-cómo-varían-los-retrasos-en-la-salida-según-la-hora-del-día-en-cada-aeropuerto-de-nyc" class="level1">
+<h1>Pregunta 15.# ¿Cómo varían los retrasos en la salida según la hora del día en cada aeropuerto de NYC?</h1>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>query_P15 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT </span></span>
+<span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a><span class="st">    origin, </span></span>
+<span id="cb94-4"><a href="#cb94-4" aria-hidden="true" tabindex="-1"></a><span class="st">    hour, </span></span>
+<span id="cb94-5"><a href="#cb94-5" aria-hidden="true" tabindex="-1"></a><span class="st">    AVG(dep_delay) AS mean_retraso, </span></span>
+<span id="cb94-6"><a href="#cb94-6" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT(*) AS total_vuelos </span></span>
+<span id="cb94-7"><a href="#cb94-7" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM vuelos </span></span>
+<span id="cb94-8"><a href="#cb94-8" aria-hidden="true" tabindex="-1"></a><span class="st">  WHERE dep_delay IS NOT NULL </span></span>
+<span id="cb94-9"><a href="#cb94-9" aria-hidden="true" tabindex="-1"></a><span class="st">  GROUP BY origin, hour </span></span>
+<span id="cb94-10"><a href="#cb94-10" aria-hidden="true" tabindex="-1"></a><span class="st">  ORDER BY mean_retraso DESC ; </span></span>
+<span id="cb94-11"><a href="#cb94-11" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb94-12"><a href="#cb94-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-13"><a href="#cb94-13" aria-hidden="true" tabindex="-1"></a>resultado_P15 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P15) </span>
+<span id="cb94-14"><a href="#cb94-14" aria-hidden="true" tabindex="-1"></a>resultado_P15</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   origin hour mean_retraso total_vuelos
+1     EWR   19   31.0890745         5748
+2     EWR   20   27.4766121         6777
+3     EWR   22   26.6393443           61
+4     EWR   21   26.1024852         4225
+5     JFK   21   26.0585995         3413
+6     LGA   22   25.8333333          192
+7     EWR   17   25.3257558         8402
+8     EWR   18   25.1351666         6873
+9     EWR   16   23.0646922         7327
+10    LGA   20   22.4693374         3245
+11    LGA   19   22.3829325         6445
+12    JFK   19   22.3098843         8387
+13    JFK   20   21.7475744         6081
+14    EWR   15   20.5886150         8520
+15    LGA   17   20.2040276         6803
+16    LGA   18   20.0958925         6549
+17    EWR   23   19.4347826           23
+18    LGA   21   19.2013167         2886
+19    JFK   18   18.3922431         7735
+20    JFK   22   17.9978336         2308
+21    JFK   17   17.6663941         8561
+22    EWR   14   17.4188912         6818
+23    LGA   16   16.7907779         6376
+24    JFK   16   16.5078614         8459
+25    JFK   15   16.0375799         7983
+26    JFK   23   13.8956098         1025
+27    EWR   13   13.6083727         8886
+28    LGA   15   13.2263589         6715
+29    LGA   14   12.6071860         6624
+30    JFK   14   11.6730320         7698
+31    EWR   12   11.6229179         6964
+32    JFK   13    9.7015881         4219
+33    LGA   13    9.5745874         6422
+34    EWR   11    7.9616561         4903
+35    EWR   10    7.7912038         6571
+36    LGA   12    7.1247860         5842
+37    LGA   11    7.0372907         7884
+38    JFK   11    6.3244068         2950
+39    JFK   12    6.1598155         4987
+40    EWR    9    5.8439846         5993
+41    JFK   10    5.6834268         4634
+42    LGA   10    5.5929407         5213
+43    EWR    8    5.4994514         9114
+44    JFK    9    5.2039289         6414
+45    JFK    8    4.0905675        10644
+46    EWR    7    4.0436768         8540
+47    EWR    6    3.4951182        10959
+48    LGA    9    3.0621536         7578
+49    LGA    8    2.4094007         7042
+50    JFK    7    1.3347196         6973
+51    LGA    5    1.2320261          306
+52    JFK    6    1.1132441         6199
+53    EWR    5    0.6491031          892
+54    JFK    5    0.5107239          746
+55    LGA    7   -0.1014390         7019
+56    LGA    6   -0.3907744         8368</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>query_P15v2 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT </span></span>
+<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a><span class="st">    origin, </span></span>
+<span id="cb96-4"><a href="#cb96-4" aria-hidden="true" tabindex="-1"></a><span class="st">    hour, </span></span>
+<span id="cb96-5"><a href="#cb96-5" aria-hidden="true" tabindex="-1"></a><span class="st">    AVG(dep_delay) AS mean_retraso, </span></span>
+<span id="cb96-6"><a href="#cb96-6" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT(*) AS total_vuelos </span></span>
+<span id="cb96-7"><a href="#cb96-7" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM vuelos </span></span>
+<span id="cb96-8"><a href="#cb96-8" aria-hidden="true" tabindex="-1"></a><span class="st">  WHERE dep_delay IS NOT NULL </span></span>
+<span id="cb96-9"><a href="#cb96-9" aria-hidden="true" tabindex="-1"></a><span class="st">  GROUP BY origin, hour </span></span>
+<span id="cb96-10"><a href="#cb96-10" aria-hidden="true" tabindex="-1"></a><span class="st">  ORDER BY origin, mean_retraso DESC ; </span></span>
+<span id="cb96-11"><a href="#cb96-11" aria-hidden="true" tabindex="-1"></a><span class="st">"</span> </span>
+<span id="cb96-12"><a href="#cb96-12" aria-hidden="true" tabindex="-1"></a><span class="co"># en esta version vemos las horas del dia ordenadas para cada aeropuerto.</span></span>
+<span id="cb96-13"><a href="#cb96-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-14"><a href="#cb96-14" aria-hidden="true" tabindex="-1"></a>resultado_P15v2 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P15v2) </span>
+<span id="cb96-15"><a href="#cb96-15" aria-hidden="true" tabindex="-1"></a>resultado_P15v2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   origin hour mean_retraso total_vuelos
+1     EWR   19   31.0890745         5748
+2     EWR   20   27.4766121         6777
+3     EWR   22   26.6393443           61
+4     EWR   21   26.1024852         4225
+5     EWR   17   25.3257558         8402
+6     EWR   18   25.1351666         6873
+7     EWR   16   23.0646922         7327
+8     EWR   15   20.5886150         8520
+9     EWR   23   19.4347826           23
+10    EWR   14   17.4188912         6818
+11    EWR   13   13.6083727         8886
+12    EWR   12   11.6229179         6964
+13    EWR   11    7.9616561         4903
+14    EWR   10    7.7912038         6571
+15    EWR    9    5.8439846         5993
+16    EWR    8    5.4994514         9114
+17    EWR    7    4.0436768         8540
+18    EWR    6    3.4951182        10959
+19    EWR    5    0.6491031          892
+20    JFK   21   26.0585995         3413
+21    JFK   19   22.3098843         8387
+22    JFK   20   21.7475744         6081
+23    JFK   18   18.3922431         7735
+24    JFK   22   17.9978336         2308
+25    JFK   17   17.6663941         8561
+26    JFK   16   16.5078614         8459
+27    JFK   15   16.0375799         7983
+28    JFK   23   13.8956098         1025
+29    JFK   14   11.6730320         7698
+30    JFK   13    9.7015881         4219
+31    JFK   11    6.3244068         2950
+32    JFK   12    6.1598155         4987
+33    JFK   10    5.6834268         4634
+34    JFK    9    5.2039289         6414
+35    JFK    8    4.0905675        10644
+36    JFK    7    1.3347196         6973
+37    JFK    6    1.1132441         6199
+38    JFK    5    0.5107239          746
+39    LGA   22   25.8333333          192
+40    LGA   20   22.4693374         3245
+41    LGA   19   22.3829325         6445
+42    LGA   17   20.2040276         6803
+43    LGA   18   20.0958925         6549
+44    LGA   21   19.2013167         2886
+45    LGA   16   16.7907779         6376
+46    LGA   15   13.2263589         6715
+47    LGA   14   12.6071860         6624
+48    LGA   13    9.5745874         6422
+49    LGA   12    7.1247860         5842
+50    LGA   11    7.0372907         7884
+51    LGA   10    5.5929407         5213
+52    LGA    9    3.0621536         7578
+53    LGA    8    2.4094007         7042
+54    LGA    5    1.2320261          306
+55    LGA    7   -0.1014390         7019
+56    LGA    6   -0.3907744         8368</code></pre>
+</div>
+</div>
+<p><strong>Comentarios de Pregunta 15:</strong></p>
+<p>En la primera consilta notamos que los 4 horarios con mayor retraso promedio están en el aeropuerto de EWR en los horarios entre las 19 y las 21 horas. En la segunda consulta notamos que los horarios con mayor retraso coinciden para los dos aeropuertos restantes.</p>
+<p>Comparatívamente con las consultas en R, analizar esta información unicamente con gráficas tiene una mayor complejidad ya que tenemos más de 6 hojas en la tabla de salida, cuando en un sólo gráfico en R se puede obtener con claridad el aumento en el retraso conforme avanza el día, así como un comparativo entre los aeropuertos.</p>
+</section>
+<section id="pregunta-16.-cuál-es-la-correlación-entre-la-velocidad-del-viento-y-los-retrasos-en-la-salida" class="level1">
+<h1>Pregunta 16.# ¿Cuál es la correlación entre la velocidad del viento y los retrasos en la salida?</h1>
+<p>Integramos la información de los vuelos y el clima, agregándole la velocidad del viento. Filtramos solo los vuelos que tienen retraso y que cuentan con información del clima.</p>
+<p>Calculamos manualmente la fórmula de correlación, ya que no es nativa a SQL.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>query_p16 <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT</span></span>
+<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="st">  (</span></span>
+<span id="cb98-4"><a href="#cb98-4" aria-hidden="true" tabindex="-1"></a><span class="st">    AVG(x*y) - AVG(x)*AVG(y)</span></span>
+<span id="cb98-5"><a href="#cb98-5" aria-hidden="true" tabindex="-1"></a><span class="st">  ) /</span></span>
+<span id="cb98-6"><a href="#cb98-6" aria-hidden="true" tabindex="-1"></a><span class="st">  (</span></span>
+<span id="cb98-7"><a href="#cb98-7" aria-hidden="true" tabindex="-1"></a><span class="st">    SQRT(AVG(x*x) - AVG(x)*AVG(x)) *</span></span>
+<span id="cb98-8"><a href="#cb98-8" aria-hidden="true" tabindex="-1"></a><span class="st">    SQRT(AVG(y*y) - AVG(y)*AVG(y))</span></span>
+<span id="cb98-9"><a href="#cb98-9" aria-hidden="true" tabindex="-1"></a><span class="st">  ) AS correlacion_viento_retraso</span></span>
+<span id="cb98-10"><a href="#cb98-10" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM (</span></span>
+<span id="cb98-11"><a href="#cb98-11" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT</span></span>
+<span id="cb98-12"><a href="#cb98-12" aria-hidden="true" tabindex="-1"></a><span class="st">      c.wind_speed AS x,</span></span>
+<span id="cb98-13"><a href="#cb98-13" aria-hidden="true" tabindex="-1"></a><span class="st">      v.dep_delay AS y</span></span>
+<span id="cb98-14"><a href="#cb98-14" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM vuelos v</span></span>
+<span id="cb98-15"><a href="#cb98-15" aria-hidden="true" tabindex="-1"></a><span class="st">    JOIN clima c</span></span>
+<span id="cb98-16"><a href="#cb98-16" aria-hidden="true" tabindex="-1"></a><span class="st">      ON v.origin = c.origin</span></span>
+<span id="cb98-17"><a href="#cb98-17" aria-hidden="true" tabindex="-1"></a><span class="st">     AND v.year   = c.year</span></span>
+<span id="cb98-18"><a href="#cb98-18" aria-hidden="true" tabindex="-1"></a><span class="st">     AND v.month  = c.month</span></span>
+<span id="cb98-19"><a href="#cb98-19" aria-hidden="true" tabindex="-1"></a><span class="st">     AND v.day    = c.day</span></span>
+<span id="cb98-20"><a href="#cb98-20" aria-hidden="true" tabindex="-1"></a><span class="st">     AND v.hour   = c.hour</span></span>
+<span id="cb98-21"><a href="#cb98-21" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE v.dep_delay IS NOT NULL</span></span>
+<span id="cb98-22"><a href="#cb98-22" aria-hidden="true" tabindex="-1"></a><span class="st">      AND v.dep_delay &gt; 0</span></span>
+<span id="cb98-23"><a href="#cb98-23" aria-hidden="true" tabindex="-1"></a><span class="st">      AND c.wind_speed IS NOT NULL</span></span>
+<span id="cb98-24"><a href="#cb98-24" aria-hidden="true" tabindex="-1"></a><span class="st">  );</span></span>
+<span id="cb98-25"><a href="#cb98-25" aria-hidden="true" tabindex="-1"></a><span class="st">  "</span></span>
+<span id="cb98-26"><a href="#cb98-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-27"><a href="#cb98-27" aria-hidden="true" tabindex="-1"></a>resultado_p16 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_p16)</span>
+<span id="cb98-28"><a href="#cb98-28" aria-hidden="true" tabindex="-1"></a>resultado_p16</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  correlacion_viento_retraso
+1                 0.02798317</code></pre>
+</div>
+</div>
+<p><strong>Comentarios de Pregunta 16:</strong></p>
+<p>Se obtiene una correlación no significativa, 0.027 entre la velocidad del viento y los retrasos de salida. Misma que se obtuvo en la segunda prueba de R.</p>
+<p>Aunque el viento puede influir en las operaciones aéreas, los resultados sugieren que, de manera aislada, no explica una proporción significativa de los retrasos en la salida, siendo necesarios otros factores para su explicación.</p>
+</section>
+<section id="pregunta-17.-los-vuelos-experimentan-más-retrasos-en-días-con-lluvias-intensas" class="level1">
+<h1>Pregunta 17.# ¿Los vuelos experimentan más retrasos en días con lluvias intensas?</h1>
+<p>Consulta que integra la información de vuelos y clima. Adicionalmente, se eliminan los registros con información vacía y finalmente, se calcula el conteo y la media de retraso basada en la clasificación entre vuelos con y sin Lluvia intensa</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>query_P17 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT </span></span>
+<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="st">    (CASE WHEN B.precip &gt; 0.3 </span></span>
+<span id="cb100-4"><a href="#cb100-4" aria-hidden="true" tabindex="-1"></a><span class="st">      THEN 'Lluvia intensa' </span></span>
+<span id="cb100-5"><a href="#cb100-5" aria-hidden="true" tabindex="-1"></a><span class="st">      ELSE 'Sin lluvia intensa' </span></span>
+<span id="cb100-6"><a href="#cb100-6" aria-hidden="true" tabindex="-1"></a><span class="st">    END) AS condiciones, </span></span>
+<span id="cb100-7"><a href="#cb100-7" aria-hidden="true" tabindex="-1"></a><span class="st">    AVG(A.dep_delay) AS mean_retraso, </span></span>
+<span id="cb100-8"><a href="#cb100-8" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT(*) </span></span>
+<span id="cb100-9"><a href="#cb100-9" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM vuelos AS A </span></span>
+<span id="cb100-10"><a href="#cb100-10" aria-hidden="true" tabindex="-1"></a><span class="st">    LEFT JOIN clima AS B </span></span>
+<span id="cb100-11"><a href="#cb100-11" aria-hidden="true" tabindex="-1"></a><span class="st">    ON A.origin = B.origin </span></span>
+<span id="cb100-12"><a href="#cb100-12" aria-hidden="true" tabindex="-1"></a><span class="st">    AND A.time_hour = B.time_hour </span></span>
+<span id="cb100-13"><a href="#cb100-13" aria-hidden="true" tabindex="-1"></a><span class="st">  WHERE dep_delay IS NOT NULL </span></span>
+<span id="cb100-14"><a href="#cb100-14" aria-hidden="true" tabindex="-1"></a><span class="st">    AND precip IS NOT NULL </span></span>
+<span id="cb100-15"><a href="#cb100-15" aria-hidden="true" tabindex="-1"></a><span class="st">  GROUP BY condiciones ; </span></span>
+<span id="cb100-16"><a href="#cb100-16" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb100-17"><a href="#cb100-17" aria-hidden="true" tabindex="-1"></a>resultado_P17 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P17) </span>
+<span id="cb100-18"><a href="#cb100-18" aria-hidden="true" tabindex="-1"></a>resultado_P17</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         condiciones mean_retraso COUNT(*)
+1     Lluvia intensa     46.04513      709
+2 Sin lluvia intensa     12.56279   326284</code></pre>
+</div>
+</div>
+<p><strong>Comentarios de Pregunta 17:</strong></p>
+<p>Mismos resultados que en la consulta de R, por lo que no se agregan comentarios adicionales.</p>
+</section>
+<section id="pregunta-18.-cómo-afecta-la-temperatura-a-los-retrasos-de-los-vuelos" class="level1">
+<h1>Pregunta 18.# ¿Cómo afecta la temperatura a los retrasos de los vuelos?</h1>
+<p>Aqui usamos chatGPT para buscar otras opciones para poder mostrar la relacion entre la temperatura y los retrasos. Esta solución agrupa en 10 rangos POR REDONDEO, así que los rangos que muestra, por ejemplo en el 10, incluye las temperaturas que van desde los 5 hasta 14.49 grados, cubriendo las temperaturas reportadas en la base de clima que van desde 10.94 hasta 100.04</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>query_P18_0 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT </span></span>
+<span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="st">    min(temp) AS min_temp,</span></span>
+<span id="cb102-4"><a href="#cb102-4" aria-hidden="true" tabindex="-1"></a><span class="st">    MAX(temp) AS Max_temp</span></span>
+<span id="cb102-5"><a href="#cb102-5" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM clima</span></span>
+<span id="cb102-6"><a href="#cb102-6" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE temp IS NOT NULL; </span></span>
+<span id="cb102-7"><a href="#cb102-7" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb102-8"><a href="#cb102-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-9"><a href="#cb102-9" aria-hidden="true" tabindex="-1"></a>resultado_P18_0 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P18_0) </span>
+<span id="cb102-10"><a href="#cb102-10" aria-hidden="true" tabindex="-1"></a>resultado_P18_0</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  min_temp Max_temp
+1    10.94   100.04</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>query_P18 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT </span></span>
+<span id="cb104-3"><a href="#cb104-3" aria-hidden="true" tabindex="-1"></a><span class="st">    ROUND(B.temp/10)*10 AS rango_temp, </span></span>
+<span id="cb104-4"><a href="#cb104-4" aria-hidden="true" tabindex="-1"></a><span class="st">    AVG(A.dep_delay) as mean_retraso,</span></span>
+<span id="cb104-5"><a href="#cb104-5" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT(*)</span></span>
+<span id="cb104-6"><a href="#cb104-6" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM vuelos AS A </span></span>
+<span id="cb104-7"><a href="#cb104-7" aria-hidden="true" tabindex="-1"></a><span class="st">    LEFT JOIN clima AS B </span></span>
+<span id="cb104-8"><a href="#cb104-8" aria-hidden="true" tabindex="-1"></a><span class="st">      ON A.origin = B.origin  </span></span>
+<span id="cb104-9"><a href="#cb104-9" aria-hidden="true" tabindex="-1"></a><span class="st">        AND A.time_hour = B.time_hour </span></span>
+<span id="cb104-10"><a href="#cb104-10" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE dep_delay IS NOT NULL </span></span>
+<span id="cb104-11"><a href="#cb104-11" aria-hidden="true" tabindex="-1"></a><span class="st">      AND temp IS NOT NULL </span></span>
+<span id="cb104-12"><a href="#cb104-12" aria-hidden="true" tabindex="-1"></a><span class="st">    GROUP BY rango_temp ; </span></span>
+<span id="cb104-13"><a href="#cb104-13" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb104-14"><a href="#cb104-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-15"><a href="#cb104-15" aria-hidden="true" tabindex="-1"></a>resultado_P18 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P18) </span>
+<span id="cb104-16"><a href="#cb104-16" aria-hidden="true" tabindex="-1"></a>resultado_P18</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   rango_temp mean_retraso COUNT(*)
+1          10    11.367403      362
+2          20    13.441021     7401
+3          30    11.391480    31621
+4          40    10.720511    63108
+5          50     9.619438    47154
+6          60    10.621476    58308
+7          70    12.032532    50781
+8          80    18.754218    55708
+9          90    20.848886    11488
+10        100    21.822967     1045</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>query_P18_corr <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT</span></span>
+<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="st">  (</span></span>
+<span id="cb106-4"><a href="#cb106-4" aria-hidden="true" tabindex="-1"></a><span class="st">    AVG(x*y) - AVG(x)*AVG(y)</span></span>
+<span id="cb106-5"><a href="#cb106-5" aria-hidden="true" tabindex="-1"></a><span class="st">  ) /</span></span>
+<span id="cb106-6"><a href="#cb106-6" aria-hidden="true" tabindex="-1"></a><span class="st">  (</span></span>
+<span id="cb106-7"><a href="#cb106-7" aria-hidden="true" tabindex="-1"></a><span class="st">    SQRT(AVG(x*x) - AVG(x)*AVG(x)) *</span></span>
+<span id="cb106-8"><a href="#cb106-8" aria-hidden="true" tabindex="-1"></a><span class="st">    SQRT(AVG(y*y) - AVG(y)*AVG(y))</span></span>
+<span id="cb106-9"><a href="#cb106-9" aria-hidden="true" tabindex="-1"></a><span class="st">  ) AS correlacion_temp_retraso</span></span>
+<span id="cb106-10"><a href="#cb106-10" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM (</span></span>
+<span id="cb106-11"><a href="#cb106-11" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT</span></span>
+<span id="cb106-12"><a href="#cb106-12" aria-hidden="true" tabindex="-1"></a><span class="st">      c.temp AS x,</span></span>
+<span id="cb106-13"><a href="#cb106-13" aria-hidden="true" tabindex="-1"></a><span class="st">      v.dep_delay AS y</span></span>
+<span id="cb106-14"><a href="#cb106-14" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM vuelos v</span></span>
+<span id="cb106-15"><a href="#cb106-15" aria-hidden="true" tabindex="-1"></a><span class="st">    JOIN clima c</span></span>
+<span id="cb106-16"><a href="#cb106-16" aria-hidden="true" tabindex="-1"></a><span class="st">      ON v.origin = c.origin</span></span>
+<span id="cb106-17"><a href="#cb106-17" aria-hidden="true" tabindex="-1"></a><span class="st">     AND v.year   = c.year</span></span>
+<span id="cb106-18"><a href="#cb106-18" aria-hidden="true" tabindex="-1"></a><span class="st">     AND v.month  = c.month</span></span>
+<span id="cb106-19"><a href="#cb106-19" aria-hidden="true" tabindex="-1"></a><span class="st">     AND v.day    = c.day</span></span>
+<span id="cb106-20"><a href="#cb106-20" aria-hidden="true" tabindex="-1"></a><span class="st">     AND v.hour   = c.hour</span></span>
+<span id="cb106-21"><a href="#cb106-21" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE v.dep_delay IS NOT NULL</span></span>
+<span id="cb106-22"><a href="#cb106-22" aria-hidden="true" tabindex="-1"></a><span class="st">      AND c.temp IS NOT NULL</span></span>
+<span id="cb106-23"><a href="#cb106-23" aria-hidden="true" tabindex="-1"></a><span class="st">  );</span></span>
+<span id="cb106-24"><a href="#cb106-24" aria-hidden="true" tabindex="-1"></a><span class="st">  "</span></span>
+<span id="cb106-25"><a href="#cb106-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-26"><a href="#cb106-26" aria-hidden="true" tabindex="-1"></a>resultado_P18_corr <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P18_corr) </span>
+<span id="cb106-27"><a href="#cb106-27" aria-hidden="true" tabindex="-1"></a>resultado_P18_corr</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  correlacion_temp_retraso
+1               0.06149127</code></pre>
+</div>
+</div>
+<p><strong>Comentarios de Pregunta 18:</strong></p>
+<p>El promedio de retraso muestra una diferencia considerable entre las temeraturas mayores a 75 grados pasando de promedios alrededor del 11 minutos de retraso a más de 18 minutos de retraso. Este comportamiento no se muestra en la correlación. Este detalle se muestra gráficamente en la programación en R.</p>
+</section>
+<section id="pregunta-19.-cómo-afectan-los-niveles-de-visibilidad-a-los-retrasos-en-la-llegada" class="level1">
+<h1>Pregunta 19.# ¿Cómo afectan los niveles de visibilidad a los retrasos en la llegada?</h1>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>query_P19 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT </span></span>
+<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a><span class="st">    B.visib, </span></span>
+<span id="cb108-4"><a href="#cb108-4" aria-hidden="true" tabindex="-1"></a><span class="st">    AVG(A.arr_delay) as mean_retraso,</span></span>
+<span id="cb108-5"><a href="#cb108-5" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT()</span></span>
+<span id="cb108-6"><a href="#cb108-6" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM vuelos AS A </span></span>
+<span id="cb108-7"><a href="#cb108-7" aria-hidden="true" tabindex="-1"></a><span class="st">    LEFT JOIN clima AS B </span></span>
+<span id="cb108-8"><a href="#cb108-8" aria-hidden="true" tabindex="-1"></a><span class="st">      ON A.origin = B.origin  </span></span>
+<span id="cb108-9"><a href="#cb108-9" aria-hidden="true" tabindex="-1"></a><span class="st">      AND A.time_hour = B.time_hour </span></span>
+<span id="cb108-10"><a href="#cb108-10" aria-hidden="true" tabindex="-1"></a><span class="st">  WHERE arr_delay IS NOT NULL </span></span>
+<span id="cb108-11"><a href="#cb108-11" aria-hidden="true" tabindex="-1"></a><span class="st">    AND visib IS NOT NULL </span></span>
+<span id="cb108-12"><a href="#cb108-12" aria-hidden="true" tabindex="-1"></a><span class="st">  GROUP BY B.visib ; </span></span>
+<span id="cb108-13"><a href="#cb108-13" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb108-14"><a href="#cb108-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb108-15"><a href="#cb108-15" aria-hidden="true" tabindex="-1"></a>resultado_P19 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P19) </span>
+<span id="cb108-16"><a href="#cb108-16" aria-hidden="true" tabindex="-1"></a>resultado_P19</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   visib mean_retraso COUNT()
+1   0.00     24.91954      87
+2   0.06     28.48810      84
+3   0.12     45.35980     403
+4   0.25     20.81889    1292
+5   0.50     39.80213    1314
+6   0.75     41.35681     426
+7   1.00     37.60180    1336
+8   1.25     65.12849     179
+9   1.50     34.67340    1534
+10  1.75     45.56818     132
+11  2.00     26.29129    2894
+12  2.50     21.73157    2265
+13  3.00     21.67750    3355
+14  4.00     17.71422    2117
+15  5.00     18.91926    4533
+16  6.00     17.12885    5914
+17  7.00     16.34935    6970
+18  8.00     16.04196    7268
+19  9.00     15.58283   10914
+20 10.00      4.32024  272802</code></pre>
+</div>
+</div>
+<p><strong>Comentarios de Pregunta 19:</strong></p>
+<p>Esta pregunta se exploró más exhaustivamente en R, aunque esta consulta inicial fue relevante para conocer los rangos de visibilidad y poder ajustar la programación de R.</p>
+</section>
+<section id="pregunta-20.-la-alta-humedad-se-relaciona-de-alguna-manera-con-los-tiempos-de-taxi-out-más-largos" class="level1">
+<h1>Pregunta 20.# ¿La alta humedad se relaciona de alguna manera con los tiempos de taxi-out más largos?</h1>
+<p>Hacemos una consulta para conocer los rangos de la variable humedad</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>query_P20_0 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT </span></span>
+<span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a><span class="st">    AVG(humid) as avh_humid,</span></span>
+<span id="cb110-4"><a href="#cb110-4" aria-hidden="true" tabindex="-1"></a><span class="st">    MIN(humid) as min_humid,</span></span>
+<span id="cb110-5"><a href="#cb110-5" aria-hidden="true" tabindex="-1"></a><span class="st">    MAX(humid) as MAX_humid</span></span>
+<span id="cb110-6"><a href="#cb110-6" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM clima</span></span>
+<span id="cb110-7"><a href="#cb110-7" aria-hidden="true" tabindex="-1"></a><span class="st">  WHERE humid IS NOT NULL</span></span>
+<span id="cb110-8"><a href="#cb110-8" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb110-9"><a href="#cb110-9" aria-hidden="true" tabindex="-1"></a>resultado_P20_0 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P20_0) </span>
+<span id="cb110-10"><a href="#cb110-10" aria-hidden="true" tabindex="-1"></a>resultado_P20_0</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  avh_humid min_humid MAX_humid
+1  62.53006     12.74       100</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>query_P20_1 <span class="ot">&lt;-</span> <span class="st">" </span></span>
+<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT </span></span>
+<span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a><span class="st">    ROUND(B.humid/10)*10 AS rango_humedad, </span></span>
+<span id="cb112-4"><a href="#cb112-4" aria-hidden="true" tabindex="-1"></a><span class="st">    AVG(A.dep_delay - A.arr_delay) as mean_taxi_out,    </span></span>
+<span id="cb112-5"><a href="#cb112-5" aria-hidden="true" tabindex="-1"></a><span class="st">    AVG(A.arr_delay) as mean_arr_retraso,</span></span>
+<span id="cb112-6"><a href="#cb112-6" aria-hidden="true" tabindex="-1"></a><span class="st">    AVG(A.dep_delay) as mean_dep_retraso,</span></span>
+<span id="cb112-7"><a href="#cb112-7" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT(*) as vuelos</span></span>
+<span id="cb112-8"><a href="#cb112-8" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM vuelos AS A </span></span>
+<span id="cb112-9"><a href="#cb112-9" aria-hidden="true" tabindex="-1"></a><span class="st">    LEFT JOIN clima AS B </span></span>
+<span id="cb112-10"><a href="#cb112-10" aria-hidden="true" tabindex="-1"></a><span class="st">      ON A.origin = B.origin  </span></span>
+<span id="cb112-11"><a href="#cb112-11" aria-hidden="true" tabindex="-1"></a><span class="st">      AND A.time_hour = B.time_hour </span></span>
+<span id="cb112-12"><a href="#cb112-12" aria-hidden="true" tabindex="-1"></a><span class="st">  WHERE arr_delay IS NOT NULL</span></span>
+<span id="cb112-13"><a href="#cb112-13" aria-hidden="true" tabindex="-1"></a><span class="st">    AND dep_delay IS NOT NULL</span></span>
+<span id="cb112-14"><a href="#cb112-14" aria-hidden="true" tabindex="-1"></a><span class="st">    AND humid IS NOT NULL </span></span>
+<span id="cb112-15"><a href="#cb112-15" aria-hidden="true" tabindex="-1"></a><span class="st">  GROUP BY rango_humedad; </span></span>
+<span id="cb112-16"><a href="#cb112-16" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb112-17"><a href="#cb112-17" aria-hidden="true" tabindex="-1"></a>resultado_P20_1 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P20_1) </span>
+<span id="cb112-18"><a href="#cb112-18" aria-hidden="true" tabindex="-1"></a>resultado_P20_1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   rango_humedad mean_taxi_out mean_arr_retraso mean_dep_retraso vuelos
+1             10     0.3111111         9.633333         9.944444     90
+2             20     7.4306504         3.733442        11.164093   6734
+3             30     6.5977635         1.999014         8.596778  26380
+4             40     6.5490398         1.788211         8.337251  56240
+5             50     6.9706207         2.047978         9.018599  60757
+6             60     7.1580456         2.950138        10.108184  50941
+7             70     6.0975489         7.606056        13.703605  44552
+8             80     4.0967965        12.444037        16.540834  37677
+9             90     1.2500422        22.138556        23.388598  35538
+10           100    -0.5364863        28.042217        27.505730   6893</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>query_P20 <span class="ot">&lt;-</span> <span class="st">"</span></span>
+<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT</span></span>
+<span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="st">  CASE</span></span>
+<span id="cb114-4"><a href="#cb114-4" aria-hidden="true" tabindex="-1"></a><span class="st">    WHEN c.humid &lt; 60 THEN '1.Baja'</span></span>
+<span id="cb114-5"><a href="#cb114-5" aria-hidden="true" tabindex="-1"></a><span class="st">    WHEN c.humid &lt;= 80 THEN '2.Media'</span></span>
+<span id="cb114-6"><a href="#cb114-6" aria-hidden="true" tabindex="-1"></a><span class="st">    ELSE '3.Alta'</span></span>
+<span id="cb114-7"><a href="#cb114-7" aria-hidden="true" tabindex="-1"></a><span class="st">  END AS rango_humedad,</span></span>
+<span id="cb114-8"><a href="#cb114-8" aria-hidden="true" tabindex="-1"></a><span class="st">  AVG(v.dep_delay - v.arr_delay) AS taxi_out_promedio,</span></span>
+<span id="cb114-9"><a href="#cb114-9" aria-hidden="true" tabindex="-1"></a><span class="st">  COUNT(*) AS vuelos</span></span>
+<span id="cb114-10"><a href="#cb114-10" aria-hidden="true" tabindex="-1"></a><span class="st">FROM vuelos v</span></span>
+<span id="cb114-11"><a href="#cb114-11" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN clima c</span></span>
+<span id="cb114-12"><a href="#cb114-12" aria-hidden="true" tabindex="-1"></a><span class="st">  ON v.origin = c.origin</span></span>
+<span id="cb114-13"><a href="#cb114-13" aria-hidden="true" tabindex="-1"></a><span class="st"> AND v.time_hour   = c.time_hour</span></span>
+<span id="cb114-14"><a href="#cb114-14" aria-hidden="true" tabindex="-1"></a><span class="st">WHERE v.dep_delay IS NOT NULL</span></span>
+<span id="cb114-15"><a href="#cb114-15" aria-hidden="true" tabindex="-1"></a><span class="st">  AND v.arr_delay IS NOT NULL</span></span>
+<span id="cb114-16"><a href="#cb114-16" aria-hidden="true" tabindex="-1"></a><span class="st">  AND c.humid IS NOT NULL</span></span>
+<span id="cb114-17"><a href="#cb114-17" aria-hidden="true" tabindex="-1"></a><span class="st">GROUP BY rango_humedad;</span></span>
+<span id="cb114-18"><a href="#cb114-18" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
+<span id="cb114-19"><a href="#cb114-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb114-20"><a href="#cb114-20" aria-hidden="true" tabindex="-1"></a>resultado_P20 <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, query_P20) </span>
+<span id="cb114-21"><a href="#cb114-21" aria-hidden="true" tabindex="-1"></a>resultado_P20</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  rango_humedad taxi_out_promedio vuelos
+1        1.Baja          6.876418 177599
+2       2.Media          5.981979  86619
+3        3.Alta          1.752501  61584</code></pre>
+</div>
+</div>
+<p><strong>Comentarios de Pregunta 20:</strong></p>
+<p>La consulta query_P20_1 podría ser interesante de analizarla gráficamente.</p>
+<p>La interpretación de esta información ha sido muy dificil, desde la complejidad de la definición de taxi_out y los resultados numéricos obtenidos en preguntas anteriores.</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
