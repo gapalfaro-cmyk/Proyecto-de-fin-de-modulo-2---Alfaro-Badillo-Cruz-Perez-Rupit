@@ -1,1 +1,124 @@
+# ** Proyecto de fin de Módulo-2a Parte Python: API APOD de la NASA **
 
+Gabriela Alfaro Prieto, Casandra Medea Badillo Salas, Emmanuel Cruz Durán,  Gabriela Pérez González, Livia Alejandra Rupit Rupit.
+
+Fecha de entrega: 7 de mayo del 2026
+
+En la siguiente sección de programación susutituimos la palabra definida por la *primera letra del apellido paterno* de cada miembro del equipo.
+*   Gabriela ALFARO Prieto: gravitational
+*   Casandra Medea BADILLO Salas: retrograde
+*   Emmanuel CRUZ Durán: supernova
+*   Gabriela PÉREZ González: geomagnetic storm
+*   Livia Alejandra RUPIT Rupit: Geminids
+
+---
+Intentando correr para todos los años
+
+Como es muy pesado obtener la info desde 1995 al 21-01-2026, el servidor de la NASA falla, por lo que lo haremos por trimestres.
+
+import requests
+import time
+from datetime import date
+
+api_key = "s9CuOEI7YGbI0DdjrL4Cd5KKe9fYFhReY2kw5znH"
+url = "https://api.nasa.gov/planetary/apod"
+
+# de https://github.com/nasa/apod-api obtenemos la documentación de la API
+# DATE must be after 1995-06-16, the first day an APOD picture was posted.
+start_date = "1995-06-16"
+end_date = "2026-01-21"
+
+print(f"Descargando APODs del {start_date} al {end_date}...")
+
+from datetime import date, datetime
+
+def generar_trimestres(año_inicio=1995, año_fin=None):
+    if año_fin is None:
+        año_fin = datetime.strptime(end_date, "%Y-%m-%d").year
+
+    trimestres = []
+    meses = [("01-01", "03-31"), ("04-01", "06-30"), ("07-01", "09-30"), ("10-01", "12-31")]
+
+    for año in range(año_inicio, año_fin + 1):
+        for start_m, end_m in meses:
+            start = f"{año}-{start_m}"
+            end   = f"{año}-{end_m}"
+
+            # Ajustar inicio del primer trimestre histórico
+            if start < "1995-06-16":
+                start = "1995-06-16"
+
+            hoy = str(end_date)
+            if start > hoy:
+                break
+            if end > hoy:
+                end = hoy
+
+            trimestres.append((start, end))
+
+    return trimestres
+
+fechas = generar_trimestres()
+print(f"Total de bloques a descargar: {len(fechas)}")
+
+all_data=[]
+
+for start, end in fechas:
+    params = {
+        "api_key":    api_key,
+        "start_date": start,
+        "end_date":   end
+        # podriamos incluir el parametro "thumbs" pero como solo nos interesa el contenido en explanation, no es necesario ponerlo ya que el valor por defecto en la API es thumbs = False
+    }
+
+    for intento in range(3):
+        response = requests.get(url, params=params)
+        print(f"[{start} to {end}] Status: {response.status_code}")
+
+        if response.status_code == 200:
+            all_data.extend(response.json())
+            break
+        else:
+            print("Reintentando...")
+            time.sleep(2)
+
+    time.sleep(1)
+
+data = all_data
+print(f"\nTotal APODs descargados: {len(data)}")
+# para el primer trimestre de 1995 no va a poder obtener nada porque de hecho
+# la fecha en la que se publicó por primera vez una imagen en APOD es hasta 1995-06,
+# fuera de eso tenemos que obtener un Status = 200 para saber que todo está corriendo bien.
+
+# Considerese un tiempo de ejcución de casi 20 mins
+# Total APODs descargados: 11,174
+
+palabra = "Geminids" # gravitational, retrograde, supernova, geomagnetic storm, Geminids
+
+resultados = [
+    item for item in data
+    if "explanation" in item and palabra.lower() in item["explanation"].lower()
+]
+
+print(f"Resultados con '{palabra}': {len(resultados)}")
+
+fechas = [item["date"] for item in resultados]
+
+min(fechas), max(fechas)
+
+from collections import Counter
+
+media_types = [item["media_type"] for item in resultados]
+
+Counter(media_types)
+
+from collections import Counter
+copyrights = [
+    item.get("copyright", "Desconocido")
+    for item in resultados
+]
+
+conteo = Counter(copyrights)
+# Ordenar por frecuencia (de mayor a menor)
+ordenados_por_frecuencia = sorted(conteo.items(), key=lambda x: x[1], reverse=True)
+print(ordenados_por_frecuencia)
