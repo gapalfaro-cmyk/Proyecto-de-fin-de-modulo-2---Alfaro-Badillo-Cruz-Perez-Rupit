@@ -16,3 +16,7 @@ Se entregan los resultados de las consultas en el Google Colab:
 
 # Tercera parte - Lenguaje R y Python (ambos): Calidad del café
 Entregables:
+260514_Proyecto_de_fin_de_modulo_Alfaro_Cruz_Perez_Rupit_Medea-Parte 3 calidad_cafe_parte3.ipynb
+260514_Proyecto_de_fin_de_modulo_Alfaro_Cruz_Perez_Rupit_Medea-Parte 3 Parte3_calidadCafe_pthon.html
+260514_Proyecto_de_fin_de_modulo_Alfaro_Cruz_Perez_Rupit_Medea-Parte 3 Parte3_calidadCafe_R.html
+260514_Proyecto_de_fin_de_modulo_Alfaro_Cruz_Perez_Rupit_Medea-Parte 3 Parte3_calidadCafe_R.qmd
