@@ -1,0 +1,464 @@
+---
+title: "Tercera Parte - Calidad del Café"
+author: "Casandra Medea Badillo Salas, Gabriela Alfaro Prieto, Emmanuel Cruz Durán, Gabriela Pérez González, Livia Alejandra Rupit Rupit"
+format:
+  html:
+    toc: true
+    toc-location: left
+    theme: flatly
+    highlight-style: tango
+    code-fold: show
+    code-tools: true
+    embed-resources: true
+  pdf:
+    toc: true
+    documentclass: article
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo    = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.width  = 9,
+  fig.height = 6,
+  dpi = 150
+)
+```
+
+```{r librerias}
+library(tidyverse)   
+library(lubridate)
+library(skimr)
+library(psych)
+library(janitor)
+library(zoo)
+```
+
+```{r carga_datos}
+datos <- readr::read_csv("coffee_ratings.csv", 
+                         na = c("", "None", "NA", "NaN", "N/A", "-9999"))
+
+# datos |> skim()
+```
+
+------------------------------------------------------------------------
+
+## Actividad 0: Análisis de valores faltantes del objeto `datos`
+
+El dataset contiene **1,339 filas y 43 columnas**. De ellas, **19 presentan valores faltantes**. La columna más afectada es `lot_number` (79.39 %), seguida de `farm_name` (26.81 %) y `mill` (23.75 %). Columnas relevantes para las actividades siguientes como `color` (20.16 %), `processing_method` (12.70 %) y `harvest_year` (3.51 %) también tienen ausencias.
+
+```{r actividad0}
+# naniar::vis_miss(datos) # se ve feo
+
+datos |> dim()
+
+na_por_columna <- datos |>
+  is.na() |>
+  colSums()
+
+cat("Tabla de las columnas de Dataframe con NAs y su porcentaje: \n")
+
+na_dataframe <- tibble(
+  columnas = na_por_columna |> names(),
+  na_por_columna,
+  porcentaje = (na_por_columna / nrow(datos) * 100) |> round(1) 
+) |> filter(na_por_columna > 0) |> 
+  arrange(desc(na_por_columna))
+
+na_dataframe |> print()
+```
+
+------------------------------------------------------------------------
+
+## Actividad 1: Crear la columna `color2` a partir de `color`
+
+Primero, se observo con `unique()` los datos dentro de la columna color. Se creó la columna `color2` mediante `dplyr::mutate()` combinado con un condicional vectorizado (`dplyr::case_when()`) por medio del uso de `is.na()` que detecta valores `NA` en un vector.
+
+La columna `color2` asigna correctamente `#00FF66` a los 870 granos "Green", `#CCEBC5` a los 114 "Bluish-Green" y `#BFFFFF` a los 85 "Blue-Green". Los 270 valores faltantes originales (ya sea `NA` o `"None"`) de `color` se conservan como `NA`.
+
+```{r}
+unique(datos$color)
+n_distinct(datos$color)
+```
+
+```{r actividad1}
+datos <- datos |>
+  mutate(
+    color2 = case_when(
+      color == "Green" ~ "#00FF66",
+      color == "Bluish-Green" ~ "#CCEBC5",
+      color == "Blue-Green" ~ "#BFFFFF",
+      color == "None" ~ NA,
+      color |> is.na() ~ NA
+    )
+  )
+
+color_results <- datos |> count(color, color2)
+cat("Distribución de color vs color2:\n")
+print(color_results)
+```
+
+------------------------------------------------------------------------
+
+## Actividad 2: Crear la columna numérica `bag_weight2` a partir de `bag_weight`
+
+Para extraer solo el valor numérico se emplearon funciones del paquete `stringr`:
+
+-   **`stringr::str_detect(string, pattern)`**: retorna un vector lógico indicando si cada elemento del vector `string` contiene el patrón regex. Se usa para identificar los valores ambiguos que tienen coma (`","`) indicando múltiples unidades.
+-   **`stringr::str_extract(string, pattern)`**: extrae la **primera** subcadena que coincide con el patrón regex. El patrón `"\\d+(\\.\\d+)?"` captura uno o más dígitos seguidos opcionalmente de un punto decimal y más dígitos.
+-   **`dplyr::if_else(condition, true, false)`**: versión estricta del `ifelse()` base que respeta los tipos de datos; asigna `NA_real_` (NA de tipo `double`) cuando la condición es verdadera (valor ambiguo).
+-   **`as.numeric()`**: convierte la cadena extraída a tipo numérico.
+
+Se encontraron **2 observaciones ambiguas**: `"1 kg,lbs"` y `"2 kg,lbs"`, que reciben `NA` en `bag_weight2`.
+
+```{r}
+datos$bag_weight |> unique()
+```
+
+Observamos que hay demasiados valores unicos
+
+```{r}
+datos$bag_weight |>
+  str_extract_all("[^\\d\\s]+") |>   # cualquier cosa que no sea dígito ni espacio
+  unlist() |>
+  unique() |>
+  sort()
+
+grepl("kg,lbs", datos$bag_weight) |>
+  sum()
+```
+
+Observamos que existen dos valores ambiguous `"kg,lbs"`
+
+```{r actividad2}
+
+numbers <- gregexpr("[0-9]+", datos$bag_weight)
+result <- regmatches(datos$bag_weight, numbers)
+
+datos <- datos |> mutate(
+  bag_weight2 = as.numeric(unlist(result))
+)
+
+datos <- datos |>
+  mutate(
+    bag_weight2 = case_when(
+      grepl(",", bag_weight) == TRUE ~ NA,
+      grepl("lbs", bag_weight) == TRUE ~ (bag_weight2 / 2.205) |> round(3),
+      TRUE ~ bag_weight2
+    )
+  )
+
+datos <- datos |>
+  mutate(
+    bag_weight2 = ifelse(bag_weight2 < 300, bag_weight2, NA)
+  )
+
+df2 <- datos |>
+  select(bag_weight, bag_weight2)
+
+df2 |> head(20)
+```
+
+
+------------------------------------------------------------------------
+
+## Actividad 3: Crear `method1` y `method2` a partir de `processing_method`
+
+Con `skimr::skim` observamos las especificaciones del vector `processing_method`, en general un vector muy limpio. Con `dyplr::count()` obtenemos las frecuencias de cada valor y vemos que solo hay valores separados por `"/"`, además de los valores `Other` y `NA`. Por lo que con ayuda de `stringr::str_match`, dividimos en una matriz los grupos del regex separados por `"/"`, de esta forma obtenemos una matriz en la cual podemos separa los valores en nuestras nuevas columnas `method1` y `method2`. Para identificar cuales y cuntos fueron los valores ambiguos solo falta con ver que valores de la primera columna de la matriz (`all_methods`) son `NA`.
+
+El conteo de ambigüedades incluye las 170 filas con `NA` en `processing_method` más las filas con el valor `"Other"` (sin separador `"/"`).
+
+```{r actividad3}
+# Que onda con el vector processing_method?
+skim(datos$processing_method)
+n_distinct(datos$processing_method) # solo son 6
+datos |> count(processing_method, sort = TRUE)
+
+# implementación de las nuevas columnas 
+# detectamos los strings separados con un backlash "/"
+all_methods <- str_match(datos$processing_method, "^(.+)\\s/\\s(.+)$")
+
+datos <- datos |>
+  mutate(
+    method1 = all_methods[, 2] |> str_trim(),
+    method2 = all_methods[, 3] |> str_trim()
+  )
+
+n_ambiguos  <- all_methods[, 1] |>
+  is.na() |>
+  sum()
+
+vals_ambiguos <- datos$processing_method[all_methods[, 1] |> is.na()] |> unique()
+# Ojo, con is.na() devuelve un vector de booleanos, R interpreta ese vector 
+# como índice, devuelve solo los TRUE de processign_method
+
+cat(sprintf("Observaciones ambiguas en processing_method: %d\n", n_ambiguos))
+
+df3 <- datos |>
+  select(processing_method, method1, method2)
+df3 |> head(20)
+```
+
+------------------------------------------------------------------------
+
+## Actividad 4: Crear `expiration_day`, `expiration_month` y `expiration_year`
+
+**Procedimiento:**
+
+**Resultados:**
+
+El formato de `expiration` es muy consistente en todo el dataset, por lo que no se encuentra ninguna observación ambigua.
+
+```{r actividad4}
+datos$expiration |> unique()
+
+datos <- datos |>
+  mutate(expiration_onset = datos$expiration |> mdy())
+datos <- datos |>
+  mutate(
+    expiration_month = month(expiration_onset),
+    expiration_year = year(expiration_onset),
+    expiration_day = day(expiration_onset)
+    )
+
+columnas_expiration = c("expiration", "expiration_day", "expiration_month", "expiration_year")
+df4 <- datos[columnas_expiration]
+
+df4 |> head(20)
+```
+
+------------------------------------------------------------------------
+
+## Actividad 5: Crear `harvest_mes` y `harvest_anio` a partir de `harvest_year`
+
+```{r actividad5}
+datos$harvest_year |> unique()
+
+regex_anios = "(20)\\d{2}"
+regex_meses = "March|April|July|Julio|August|January|December"
+
+datos <- datos |> mutate(
+  harvest_anio = sapply(str_extract_all(harvest_year, regex_anios), function(x){
+    if(length(x) > 0) tail(x,1) else NA
+  }), 
+  harvest_mes = sapply(str_extract_all(harvest_year, regex_meses), function(x){
+    if(length(x) > 0) tail(x, 1) else NA
+  })
+)
+
+df5 <- datos[c("harvest_year", "harvest_anio", "harvest_mes")]
+df5 |> head(20)
+```
+
+------------------------------------------------------------------------
+
+## Actividad 6: Visualización de `total_cup_points`, `acidity` y `color2`
+
+```{r actividad6, fig.width=9, fig.height=6}
+
+
+datos <- datos |>
+  mutate(
+    total_cup_points = na_if(total_cup_points, 0),
+    acidity = na_if(acidity, 0),
+  )
+
+datos[c("total_cup_points", "acidity")] |> summary()
+
+paleta <- datos |>
+  filter(!is.na(color)) |>
+  distinct(color, color2) |>
+  deframe()
+
+formas <- c(
+  "Green"        = 24,
+  "Bluish-Green" = 22,
+  "Blue-Green"   = 21
+)
+
+datos |>
+  filter(!is.na(color)) |>
+  ggplot(aes(x = total_cup_points, y = acidity, fill = color, shape = color)) +
+  geom_jitter(color = "black", size = 2, stroke = 0.15,
+             alpha = 0.5, width = 0.03, height = 0.03) +
+  scale_fill_manual(values = paleta, name = "Color") +
+  scale_shape_manual(values = formas, name = "Color") +
+  guides(
+    fill = guide_legend(override.aes = list(size = 4, alpha = .9)),
+    shape = guide_legend(override.aes = list(size = 4, alpha = .9))
+  ) +
+  xlab(label = "Calificación/Puntos Totales") +
+  ylab(label = "Acidez") +
+  ggtitle(label = "Puntos totales vs. Acides por Color") +
+  theme_dark()
+
+```
+
+------------------------------------------------------------------------
+
+## Actividad 7: Visualización de densidad de `bag_weight2` por `species`
+
+```{r actividad7}
+  
+ggplot(datos, aes(x = bag_weight2, fill = species)) +
+  geom_density(alpha = 0.5) +
+  labs(
+    title = "Distribución del peso de las bolsas de café",
+    subtitle = "Comparación por especie",
+    x = "Peso de la bolsa (kg)",
+    y = "Densidad",
+    fill = "Especie:"
+  ) +
+  theme_classic() +
+  theme(
+    plot.title = element_text(face = "bold", size = 14),
+    plot.subtitle = element_text(size = 12),
+    legend.position = "top"
+  )
+```
+
+------------------------------------------------------------------------
+
+## Actividad 8: Fecha de expiración vs `total_cup_points` (México, Brazil, Colombia, Guatemala)
+
+```{r actividad8, fig.width=12, fig.height=6}
+countries = c("Mexico", "Brazil", "Colombia", "Guatemala")
+
+selected_countries <- datos |>
+  filter(country_of_origin %in% countries)
+
+ggplot(selected_countries, aes(x = expiration_onset, y = total_cup_points,
+  colour = country_of_origin, group = country_of_origin)) +
+  geom_line(alpha = 0.7) +
+  geom_point(size = 0.7) +
+  scale_x_date(date_breaks = "3 month", date_labels = "%b %Y") +
+  labs(
+    title = "Puntuación total de cada Mes/Año por País",
+    x = "Mes/Año",
+    y = "Puntuación Total",
+    colour = "País de Origen"
+  ) + 
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+```
+
+------------------------------------------------------------------------
+
+## Actividad 9: Mes de expiración vs altitudes (México, Brasil, Colombia, Guatemala — 2016 y 2017)
+
+Observamos que a partir del 2017, los valores para la altura máxima, mínima y promedio es igual.
+
+```{r actividad9, fig.width=13, fig.height=6}
+paises <- c("Mexico", "Brazil", "Colombia", "Guatemala")
+
+df <- datos |>
+  filter(country_of_origin %in% paises,
+         expiration_year %in% c(2016, 2017))
+df <- df |>
+  mutate(fecha_exp = make_date(year = expiration_year,
+                               month = expiration_month,
+                               day = 1))
+df_long <- df %>%
+  select(fecha_exp,
+         altitude_mean_meters,
+         altitude_low_meters,
+         altitude_high_meters) %>%
+  drop_na() %>%
+  pivot_longer(
+    cols = c(altitude_mean_meters,
+             altitude_low_meters,
+             altitude_high_meters),
+    names_to = "tipo_altitud",
+    values_to = "altitud"
+  )
+
+ggplot(df_long, aes(x = fecha_exp, y = altitud, color = tipo_altitud)) +
+  stat_summary(fun = mean, geom = "line", size = 1.2) +
+  scale_x_date(
+      date_breaks = "2 months",
+    date_labels = "%b %Y"
+  ) +
+  labs(
+    subtitle = "México, Brasil, Colombia y Guatemala",
+    x = "Fecha de expiración",
+    y = "Altitud (metros)",
+    color = "Tipo de altitud"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(face = "bold", size = 16),
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    legend.position = "top"
+  )
+
+  
+```
+
+------------------------------------------------------------------------
+
+## Actividad 10: Visualización de `aftertaste`, `acidity`, `body` y `species` en un mismo canvas
+
+
+Para graficaciones multivariables, investigamos dos formas de graficar Grouping vs Faceting.
+
+En nuestra primera grafica simplemente agrupamos las 4 variables:
+
+`species` esta determinada por el color rojo o azul; `body` por el tamaño de la burbuja; y para cada eje tenemos `acidity` y `aftertaste`
+
+```{r actividad10, fig.width=11, fig.height=6}
+
+df10 <- datos |>
+  select(aftertaste, acidity, body, species) |>
+  drop_na()
+
+df10 |> summary()
+
+df10 |> ggplot(aes(x = acidity,
+                   y = aftertaste,
+                   color = species,
+                   size = body)) +
+  geom_point(alpha = 0.6) +
+  scale_size(
+    name   = "Body",
+    range  = c(.1, 6),
+    breaks = c(6, 7, 8)
+  ) +
+  guides(
+    size  = guide_legend(override.aes = list(alpha = 1)),
+    color = guide_legend(override.aes = list(alpha = 1, size = 4))
+  ) +
+  labs(
+    title    = "Relación entre Aftertaste, Acidity y Body por Especie de Café",
+    subtitle = "Visualización multivariable de atributos sensoriales",
+    x        = "Acidez",
+    y        = "Aftertaste",
+    color    = "Especie"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    legend.position = "right"
+  )
+
+```
+
+Observamos que el rango de las columnas `aftertaste`, `acidity`, `body` es similar con mínimos `5-6`, máximos `8-9` y promedios `7-8`, lo que dificulta distiguir la variable `body` en nuestra grafica anterior. Por lo que utilizamos `faceting`, el cual es el proceso de separar en dos graficas en un mismo canvas. La misma tecnica la implementamos en python.
+
+```{r}
+df10 <- datos |>
+  select(aftertaste, acidity, body, species) |>
+  drop_na()
+
+df10 |> ggplot(aes(x = acidity, y = aftertaste)) +
+  geom_point(aes(colour = body), alpha = 0.6) +
+  facet_wrap(~species, ncol = 2) +
+  scale_color_viridis_c(option = "veridis") +
+  labs(
+    title = "Relación entre Acidez, Aftertaste y Body por Especie",
+    x = "Acidez",
+    y = "Aftertaste",
+    colour = "body"
+  )
+
+```
